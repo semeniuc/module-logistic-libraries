@@ -1,0 +1,26 @@
+{
+  "name": "m90/logistic-libraries",
+  "type": "module",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/",
+      "App\\Kernel\\": "kernel/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Vadim Semeniuc",
+      "email": "strongandluckymobile@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "ext-curl": "*",
+    "symfony/dotenv": "^6.0",
+    "symfony/http-client": "^6.0",
+    "phpoffice/phpspreadsheet": "*"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "*"
+  }
+}
