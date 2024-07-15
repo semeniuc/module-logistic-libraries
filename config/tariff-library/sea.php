@@ -6,55 +6,55 @@
 return [
     'dev' => [
         'isActive' => [
-            'id' => 'ufCrm4IsActive',
+            'id' => 'UF_CRM_4_IS_ACTIVE',
             'column' => ''
         ],
         'pol' => [
-            'id' => 'ufCrm4Pol',
+            'id' => 'UF_CRM_4_POL',
             'column' => 'A'
         ],
         'pod' => [
-            'id' => 'ufCrm4Pod',
+            'id' => 'UF_CRM_4_POD',
             'column' => 'B'
         ],
         'destination' => [
-            'id' => 'ufCrm4Destination',
+            'id' => 'UF_CRM_4_DESTINATION',
             'column' => 'C'
         ],
         'contractor' => [
-            'id' => 'ufCrm4Contractor',
+            'id' => 'UF_CRM_4_CONTRACTOR',
             'column' => 'D'
         ],
         'route' => [
-            'id' => 'ufCrm4Route',
+            'id' => 'UF_CRM_4_ROUTE',
             'column' => 'E'
         ],
         'deliveryCostCoc20Dry' => [
-            'id' => 'ufCrm_4_DELIVERY_COST_COC_20DRY',
+            'id' => 'UF_CRM_4_DELIVERY_COST_COC_20DRY',
             'column' => 'F'
         ],
         'deliveryCostCoc40Hc' => [
-            'id' => 'ufCrm_4_DELIVERY_COST_COC_40HC',
+            'id' => 'UF_CRM_4_DELIVERY_COST_COC_40HC',
             'column' => 'G'
         ],
         'deliveryCostSoc20Dry' => [
-            'id' => 'ufCrm_4_DELIVERY_COST_SOC_20DRY',
+            'id' => 'UF_CRM_4_DELIVERY_COST_SOC_20DRY',
             'column' => 'H'
         ],
         'deliveryCostSoc40Hc' => [
-            'id' => 'ufCrm_4_DELIVERY_COST_SOC_40HC',
+            'id' => 'UF_CRM_4_DELIVERY_COST_SOC_40HC',
             'column' => 'I'
         ],
         'deliveryPriceValidFrom' => [
-            'id' => 'ufCrm4DeliveryPriceValidFrom',
+            'id' => 'UF_CRM_4_DELIVERY_PRICE_VALID_FROM',
             'column' => 'J'
         ],
         'deliveryPriceValidTill' => [
-            'id' => 'ufCrm4DeliveryPriceValidTill',
+            'id' => 'UF_CRM_4_DELIVERY_PRICE_VALID_TILL',
             'column' => 'K'
         ],
         'comment' => [
-            'id' => 'ufCrm4Comment',
+            'id' => 'UF_CRM_4_COMMENT',
             'column' => 'L'
         ],
     ],

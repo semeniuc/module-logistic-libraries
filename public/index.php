@@ -3,12 +3,12 @@
 define('APP_PATH', dirname(__DIR__));
 
 use App\Kernel\App;
-use App\Service\LoggingService;
 use Symfony\Component\Dotenv\Dotenv;
 
-require_once APP_PATH . '/vendor/autoload.php';
-
 try {
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php';
+    require_once APP_PATH . '/include.php';
+
     $dotenv = new Dotenv();
     $dotenv->loadEnv(APP_PATH . '/.env');
 
@@ -18,12 +18,19 @@ try {
     $app = new App();
     $app->run();
 } catch (Throwable $th) {
-    LoggingService::save([
+//    LoggingService::save([
+//        'code' => $th->getCode(),
+//        'message' => $th->getMessage(),
+//        'file' => $th->getFile(),
+//        'line' => $th->getLine(),
+//    ], 'error', 'errors');
+
+//    echo json_encode(['result' => 'error']);
+
+    echo json_encode([
         'code' => $th->getCode(),
         'message' => $th->getMessage(),
         'file' => $th->getFile(),
         'line' => $th->getLine(),
-    ], 'error', 'errors');
-
-    echo json_encode(['result' => 'error']);
+    ], JSON_PRETTY_PRINT);
 }

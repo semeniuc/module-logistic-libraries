@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Kernel\Controller\Controller;
-use App\Service\Export\ExportService;
-use App\Service\Import\ImportService;
+use App\Service\ExportService;
+use App\Service\ImportService;
 
 class LibraryDataController extends Controller
 {
@@ -27,6 +27,8 @@ class LibraryDataController extends Controller
 
     public function import(): void
     {
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php';
+
 //        LoggingService::save([
 //            'post' => $this->request()->post,
 //            'file' => $this->request()->files,

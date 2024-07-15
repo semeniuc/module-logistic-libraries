@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Export;
+namespace App\Service\Excel;
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -13,7 +13,7 @@ class CreateSpreadsheetService
     public function create(string $templateName, array $data): ?Spreadsheet
     {
         $spreadsheet = $this->getTemplate($templateName);
-        
+
         if ($spreadsheet) {
             $listSheets = $this->getListSheets($templateName);
 
@@ -53,13 +53,12 @@ class CreateSpreadsheetService
 
     private function addData(Worksheet &$worksheet, array $coordinates, array $data): void
     {
-        $prepare = [];
         if ($data) {
-            $row =$worksheet->getCellCollection()->getCurrentRow() + 1;
+            $row = $worksheet->getCellCollection()->getCurrentRow() + 1;
 
             foreach ($data as $item) {
                 foreach ($coordinates as $coordinate) {
-                    if($coordinate['column'] && $value = $item[$coordinate['id']]) {
+                    if ($coordinate['column'] && $value = $item[$coordinate['id']]) {
                         $worksheet->setCellValue($coordinate['column'] . $row, $value);
                     }
                 }

@@ -4,41 +4,54 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Service\Bitrix24ConnectService;
-use App\Service\LoggingService;
+use Bitrix\Crm\Item;
+use Bitrix\Crm\Service\Container;
+use Bitrix\Crm\Service\Factory;
+use Bitrix\Main\Loader;
 
 class EntityRepository
 {
-    public function get(int $entityTypeId): array
+    private Container $container;
+
+    public function __construct()
     {
-        $method = 'crm.item.list';
-        $request = Bitrix24ConnectService::call($method, ['entityTypeId' => $entityTypeId]);
-        return $this->response($request)['items'] ?? [];
+        (Loader::includeModule('crm')) ?: die();
+        $this->container = Container::getInstance();
     }
 
-    public function add(int $entityTypeId, array $dataBatch): array
+    public function getItems(int $entityTypeId): array
     {
-        $method = 'batch';
-        $request = Bitrix24ConnectService::call($method, ['entityTypeId' => $entityTypeId, 'data' => $dataBatch]);
-        return $this->response($request)['items'] ?? [];
-    }
+        $result = [];
 
-    public function delete(int $entityTypeId, array $dataBatch)
-    {
-        $method = 'crm.item.delete';
-        $request = Bitrix24ConnectService::call($method, ['entityTypeId' => $entityTypeId, 'data' => $dataBatch]);
-        return $this->response($request)['items'] ?? [];
-    }
-
-    private function response(array $response)
-    {
-        if (!isset($response['result'])) {
-            LoggingService::save([
-                'response' => $response,
-            ], 'http', 'bitrix');
-            return [];
+        if ($items = $this->getObjects($entityTypeId)) {
+            foreach ($items as $item) {
+                $result[] = $item->getData();
+            }
         }
 
-        return $response['result'];
+        return $result;
+    }
+
+    public function deleteItems(int $entityTypeId)
+    {
+        if ($items = $this->getObjects($entityTypeId)) {
+            foreach ($items as $item) {
+                $item->delete();
+            }
+        }
+    }
+
+    public function createItems(int $entityTypeId, array $data)
+    {
+    }
+
+    /**
+     * @param int $entityTypeId
+     * @return Item []
+     */
+    private function getObjects(int $entityTypeId): array
+    {
+        $factory = $this->container->getFactory($entityTypeId);
+        return $factory->getItems();
     }
 }

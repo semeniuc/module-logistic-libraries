@@ -2,25 +2,33 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Export;
+namespace App\Service;
 
+use App\Service\Bitrix\GetItemsService;
+use App\Service\Excel\CreateSpreadsheetService;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use XMLWriter;
 
 class ExportService
 {
-    private PrepareDataService $dataService;
+    private GetItemsService $getItemsService;
     private CreateSpreadsheetService $createFileService;
 
     public function __construct()
     {
-        $this->dataService = new PrepareDataService();
+        $this->getItemsService = new GetItemsService();
         $this->createFileService = new CreateSpreadsheetService();
     }
 
     public function execute(string $categoryName): void
     {
-        $data = $this->dataService->getData($categoryName);
+        $data = $this->getItemsService->execute($categoryName);
+
+        # test
+        $class = new XMLWriter();
+        dd([$class::class => '']);
+
         $spreadsheet = $this->createFileService->create($categoryName, $data);
 
         $this->output($spreadsheet);

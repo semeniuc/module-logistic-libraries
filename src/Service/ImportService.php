@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Import;
+namespace App\Service;
 
-use App\Service\Export\PrepareDataService;
+use App\Service\Bitrix\GetItemsService;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class ImportService
 {
-    private PrepareDataService $dataService;
+    private GetItemsService $getItemsService;
 
     public function __construct()
     {
-        $this->dataService = new PrepareDataService();
+        $this->getItemsService = new GetItemsService();
     }
 
     public function execute(string $categoryName, string $pathToFile)
@@ -22,7 +22,7 @@ class ImportService
 //            $this->read(APP_PATH . $pathToFile);
 //        }
 
-        $data = $this->dataService->getData($categoryName);
+        $data = $this->getItemsService->execute($categoryName);
         dd($data);
     }
 

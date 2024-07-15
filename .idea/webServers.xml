@@ -5,7 +5,7 @@
       <webServer id="bf39e211-0992-4d88-9f84-7bf47bd36750" name="dev.legende-log.ru">
         <fileTransfer accessType="SFTP" host="80.89.10.197" port="22" sshConfigId="770d7ac6-e8bb-47f3-81e7-cca45f475c92" sshConfig="dev.legende-log.ru">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" isUseRsync="true" />
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>

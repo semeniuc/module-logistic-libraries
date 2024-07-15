@@ -16,11 +16,12 @@
   "require": {
     "php": ">=8.1",
     "ext-curl": "*",
+    "ext-xmlwriter": "*",
     "symfony/dotenv": "^6.0",
     "symfony/http-client": "^6.0",
     "phpoffice/phpspreadsheet": "*"
   },
   "require-dev": {
-    "symfony/var-dumper": "*"
+    "symfony/var-dumper": "^6.0"
   }
 }
