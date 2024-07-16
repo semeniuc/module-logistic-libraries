@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Excel;
+namespace App\Service\Spreadsheet;
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
