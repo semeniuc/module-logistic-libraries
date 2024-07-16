@@ -1,60 +1,99 @@
 <?php
 
-/**
- * Id полей и координаты в excel
- */
 return [
-    'dev' => [
+    'rows' => [
+        'first' => 3,
+    ],
+    'columns' => [
         'isActive' => [
-            'id' => 'UF_CRM_4_IS_ACTIVE',
+            'id' => [
+                'dev' => 'UF_CRM_4_IS_ACTIVE',
+                'prod' => null,
+            ],
             'column' => ''
         ],
         'pol' => [
-            'id' => 'UF_CRM_4_POL',
+            'id' => [
+                'dev' => 'UF_CRM_4_POL',
+                'prod' => null,
+            ],
             'column' => 'A'
         ],
         'pod' => [
-            'id' => 'UF_CRM_4_POD',
+            'id' => [
+                'dev' => 'UF_CRM_4_POD',
+                'prod' => null,
+            ],
             'column' => 'B'
         ],
         'destination' => [
-            'id' => 'UF_CRM_4_DESTINATION',
+            'id' => [
+                'dev' => 'UF_CRM_4_DESTINATION',
+                'prod' => null,
+            ],
             'column' => 'C'
         ],
         'contractor' => [
-            'id' => 'UF_CRM_4_CONTRACTOR',
+            'id' => [
+                'dev' => 'UF_CRM_4_CONTRACTOR',
+                'prod' => null,
+            ],
             'column' => 'D'
         ],
         'route' => [
-            'id' => 'UF_CRM_4_ROUTE',
+            'id' => [
+                'dev' => 'UF_CRM_4_ROUTE',
+                'prod' => null,
+            ],
             'column' => 'E'
         ],
         'deliveryCostCoc20Dry' => [
-            'id' => 'UF_CRM_4_DELIVERY_COST_COC_20DRY',
+            'id' => [
+                'dev' => 'UF_CRM_4_DELIVERY_COST_COC_20DRY',
+                'prod' => null,
+            ],
             'column' => 'F'
         ],
         'deliveryCostCoc40Hc' => [
-            'id' => 'UF_CRM_4_DELIVERY_COST_COC_40HC',
+            'id' => [
+                'dev' => 'UF_CRM_4_DELIVERY_COST_COC_40HC',
+                'prod' => null,
+            ],
             'column' => 'G'
         ],
         'deliveryCostSoc20Dry' => [
-            'id' => 'UF_CRM_4_DELIVERY_COST_SOC_20DRY',
+            'id' => [
+                'dev' => 'UF_CRM_4_DELIVERY_COST_SOC_20DRY',
+                'prod' => null,
+            ],
             'column' => 'H'
         ],
         'deliveryCostSoc40Hc' => [
-            'id' => 'UF_CRM_4_DELIVERY_COST_SOC_40HC',
+            'id' => [
+                'dev' => 'UF_CRM_4_DELIVERY_COST_SOC_40HC',
+                'prod' => null,
+            ],
             'column' => 'I'
         ],
         'deliveryPriceValidFrom' => [
-            'id' => 'UF_CRM_4_DELIVERY_PRICE_VALID_FROM',
+            'id' => [
+                'dev' => 'UF_CRM_4_DELIVERY_PRICE_VALID_FROM',
+                'prod' => null,
+            ],
             'column' => 'J'
         ],
         'deliveryPriceValidTill' => [
-            'id' => 'UF_CRM_4_DELIVERY_PRICE_VALID_TILL',
+            'id' => [
+                'dev' => 'UF_CRM_4_DELIVERY_PRICE_VALID_TILL',
+                'prod' => null,
+            ],
             'column' => 'K'
         ],
         'comment' => [
-            'id' => 'UF_CRM_4_COMMENT',
+            'id' => [
+                'dev' => 'UF_CRM_4_COMMENT',
+                'prod' => null,
+            ],
             'column' => 'L'
         ],
     ],

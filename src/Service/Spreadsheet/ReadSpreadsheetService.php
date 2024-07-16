@@ -28,8 +28,6 @@ class ReadSpreadsheetService
 
     private function getSheetsByCategoryName(array $sheets, string $categoryName): array
     {
-        $result = [];
-
         $listSheets = (include APP_PATH . '/config/app/templates.php')[$categoryName]['sheets'];
 
         if ($sheets && $listSheets) {
@@ -39,13 +37,24 @@ class ReadSpreadsheetService
                      * @var Worksheet $sheet
                      */
                     if ($sheet->getTitle() === $sheetName) {
-                        $result[$sheetId] = $sheet->toArray();
+                        $result[$sheetId] = $this->getRowsBySheetId($categoryName, $sheetId, $sheet);
                         break;
                     }
                 }
             }
         }
 
-        return $result;
+        return $result ?? [];
+    }
+
+    private function getRowsBySheetId(string $categoryName, string $sheetId, Worksheet $sheet): array
+    {
+        $firstRow = (include APP_PATH . '/config/' . $categoryName . '/' . $sheetId . '.php')['rows']['first'];
+
+        if ($firstRow < $sheet->getHighestRow()) {
+            return array_slice($sheet->toArray(), $firstRow);
+        }
+
+        return [];
     }
 }
