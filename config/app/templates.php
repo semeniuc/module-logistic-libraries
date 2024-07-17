@@ -5,9 +5,9 @@ return [
         'template' => 'tariff-library-template.xlsx',
         'sheets' => [
             'sea' => 'Море',
-//            'railway' => 'ЖД',
+            'railway' => 'ЖД',
 //            'container' => 'Аренда контейнеров',
-//            'auto' => 'Автодоставка',
+            'auto' => 'Автодоставка',
         ],
     ],
 ];
