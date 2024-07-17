@@ -5,13 +5,6 @@ return [
         'first' => 3,
     ],
     'columns' => [
-        'isActive' => [
-            'id' => [
-                'dev' => 'UF_CRM_4_IS_ACTIVE',
-                'prod' => null,
-            ],
-            'column' => ''
-        ],
         'pol' => [
             'id' => [
                 'dev' => 'UF_CRM_4_POL',

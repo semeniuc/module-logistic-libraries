@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Service\Items\AddItemsService;
 use App\Service\Items\DeleteItemsService;
 use App\Service\Spreadsheet\ReadSpreadsheetService;
 
@@ -11,11 +12,13 @@ class ImportService
 {
     private ReadSpreadsheetService $readSpreadsheetService;
     private DeleteItemsService $deleteItemsService;
+    private AddItemsService $addItemsService;
 
     public function __construct()
     {
         $this->readSpreadsheetService = new ReadSpreadsheetService();
         $this->deleteItemsService = new DeleteItemsService();
+        $this->addItemsService = new AddItemsService();
     }
 
     public function execute(string $categoryName, string $pathToFile)
@@ -28,7 +31,9 @@ class ImportService
             $this->delete($categoryName, $dataFromExcel);
 
             # Add
-//            dd($data);
+            $result = $this->add($categoryName, $dataFromExcel);
+
+            dd($result);
         }
     }
 
@@ -47,8 +52,12 @@ class ImportService
         $this->deleteItemsService->execute($categoryName, $types);
     }
 
-    private function add(string $categoryName, array $data): array
+    private function add(string $categoryName, array $dataFromExcel): array
     {
-        return [];
+        return $this->addItemsService->execute($categoryName, $dataFromExcel);
+    }
+
+    private function getResult(array $resultAddItems): array
+    {
     }
 }

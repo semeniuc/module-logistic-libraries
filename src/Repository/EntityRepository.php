@@ -41,8 +41,20 @@ class EntityRepository
         }
     }
 
-    public function createItems(int $entityTypeId, array $data)
+    /**
+     * @param int $entityTypeId
+     * @param array $items
+     * @return Item []
+     */
+    public function createItems(int $entityTypeId, array $items): array
     {
+        $factory = $this->container->getFactory($entityTypeId);
+
+        foreach ($items as $key => $item) {
+            $result[$key] = $factory->createItem()->setFromCompatibleData($item)->save();
+        }
+
+        return $result ?? [];
     }
 
     /**

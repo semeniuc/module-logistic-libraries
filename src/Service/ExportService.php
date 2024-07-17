@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Service\Bitrix\GetItemsService;
-use App\Service\Excel\CreateSpreadsheetService;
+use App\Service\Items\GetItemsService;
+use App\Service\Spreadsheet\CreateSpreadsheetService;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use XMLWriter;
