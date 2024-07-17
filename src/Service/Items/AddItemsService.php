@@ -28,7 +28,7 @@ class AddItemsService extends ItemsService
             $entityTypeIds = $this->getEntityTypeIds($categoryName);
 
             foreach ($data as $entityType => $items) {
-                $result[$entityType][] = $this->entityRepository->createItems($entityTypeIds[$entityType], $items);
+                $result[$entityType] = $this->entityRepository->createItems($entityTypeIds[$entityType], $items);
             }
         }
         return $result ?? [];

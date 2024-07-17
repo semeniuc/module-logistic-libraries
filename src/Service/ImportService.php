@@ -31,9 +31,10 @@ class ImportService
             $this->delete($categoryName, $dataFromExcel);
 
             # Add
-            $result = $this->add($categoryName, $dataFromExcel);
+            $resultAddItems = $this->add($categoryName, $dataFromExcel);
+            $result = $this->output($categoryName, $resultAddItems);
 
-            dd($result);
+            echo json_encode($result);
         }
     }
 
@@ -57,7 +58,35 @@ class ImportService
         return $this->addItemsService->execute($categoryName, $dataFromExcel);
     }
 
-    private function getResult(array $resultAddItems): array
+    private function output(string $categoryName, array $resultAddItems): array
     {
+        $result = [
+            'success' => [
+                'total' => 0,
+            ],
+            'errors' => [
+                'total' => 0,
+                'records' => [],
+            ],
+        ];
+
+        foreach ($resultAddItems as $entityType => $items) {
+            $firstRow = (include APP_PATH . '/config/' . $categoryName . '/' . $entityType . '.php')['rows']['first'];
+
+            foreach ($items as $key => $item) {
+                if ($item->isSuccess()) {
+                    $result['success']['total'] += 1;
+                } else {
+                    $result['errors']['total'] += 1;
+                    $result['errors']['records'][] = [
+                        'sheet' => $entityType,
+                        'row' => $firstRow + $key + 1,
+                        'description' => $item->getErrorMessages(),
+                    ];
+                }
+            }
+        }
+
+        return $result;
     }
 }

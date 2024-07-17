@@ -35,7 +35,7 @@ class LibraryDataController extends Controller
 //        ]);
 
         $categoryName = $this->request()->post['categoryName'] ?? 'tariff-library';
-        $pathToFile = $this->request()->files['excelFile']['tmp_name'] ?? '/var/tmp/sample-data.xlsx';
+        $pathToFile = $this->request()->files['excelFile']['tmp_name'] ?? '/var/tmp/sample-data-with-errors.xlsx';
         $this->importService->execute($categoryName, $pathToFile);
 
         echo json_encode([

@@ -50,8 +50,10 @@ class EntityRepository
     {
         $factory = $this->container->getFactory($entityTypeId);
 
-        foreach ($items as $key => $item) {
-            $result[$key] = $factory->createItem()->setFromCompatibleData($item)->save();
+        foreach ($items as $key => $data) {
+            $item = $factory->createItem()->setFromCompatibleData($data);
+            $operation = $factory->getAddOperation($item)->disableCheckAccess()->enableCheckFields();
+            $result[$key] = $operation->launch();
         }
 
         return $result ?? [];
