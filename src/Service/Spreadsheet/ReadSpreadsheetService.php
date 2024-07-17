@@ -52,9 +52,18 @@ class ReadSpreadsheetService
         $firstRow = (include APP_PATH . '/config/' . $categoryName . '/' . $sheetId . '.php')['rows']['first'];
 
         if ($firstRow < $sheet->getHighestRow()) {
-            return array_slice($sheet->toArray(), $firstRow);
+            $rows = array_slice($sheet->toArray(), $firstRow);
+
+            if (!empty($rows)) {
+                $rows = array_filter($rows, [$this, 'isNotEmptyRow']);
+            }
         }
 
-        return [];
+        return $rows ?? [];
+    }
+
+    private function isNotEmptyRow(array $row): bool
+    {
+        return !empty(array_filter($row));
     }
 }
