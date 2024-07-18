@@ -58,6 +58,8 @@ class ImportService
 
     private function output(string $categoryName, array $resultAddItems): void
     {
+        $sheets = (include APP_PATH . '/config/app/templates.php')[$categoryName]['sheets'];
+
         $result = [
             'success' => [
                 'total' => 0,
@@ -77,7 +79,7 @@ class ImportService
                 } else {
                     $result['errors']['total'] += 1;
                     $result['errors']['records'][] = [
-                        'sheet' => $entityType,
+                        'sheet' => $sheets[$entityType],
                         'row' => $firstRow + $key + 1,
                         'description' => $item->getErrorMessages(),
                     ];
