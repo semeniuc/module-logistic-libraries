@@ -167,22 +167,3 @@ function toggleElements(disable) {
         }
     });
 }
-
-function importResult() {
-    const errors = [
-        {row: 5, message: 'Invalid data format'},
-        {row: 12, message: 'Missing required field'}
-    ];
-
-    document.getElementById('successCount').textContent = 10;
-    document.getElementById('errorCount').textContent = errors.length;
-    const errorTable = document.getElementById('errorTable');
-    const errorTableBody = errorTable.querySelector('tbody');
-    errorTableBody.innerHTML = '';
-    errors.forEach(error => {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td>${error.row}</td><td>${error.message}</td>`;
-        errorTableBody.appendChild(row);
-    });
-    errorTable.style.display = 'table';
-}
