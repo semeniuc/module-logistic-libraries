@@ -33,7 +33,7 @@ class ImportService
             # Add
             $resultAddItems = $this->add($categoryName, $dataFromExcel);
             $result = $this->output($categoryName, $resultAddItems);
-            
+
             echo json_encode($result);
         }
     }

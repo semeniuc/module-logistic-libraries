@@ -12,7 +12,7 @@ class ReadSpreadsheetService
 {
     public function execute(string $categoryName, string $pathToFile): array
     {
-        if (!file_exists(APP_PATH . $pathToFile)) {
+        if (!file_exists($pathToFile)) {
             return [];
         }
 
@@ -22,7 +22,7 @@ class ReadSpreadsheetService
 
     private function getSpreadsheet(string $pathToFile): Spreadsheet
     {
-        return IOFactory::load(APP_PATH . $pathToFile);
+        return IOFactory::load($pathToFile);
     }
 
 

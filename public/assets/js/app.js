@@ -40,7 +40,7 @@ function exportData() {
     document.getElementById('spinner').style.display = 'block';
     toggleElements(true);
 
-    fetch('/library/export', {
+    fetch('/local/modules/logistic.libraries/export', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ function exportData() {
 
             document.getElementById('spinner').style.display = 'none';
             toggleElements(false);
-            
+
         })
         .catch(error => {
             console.error('Download error:', error);
@@ -72,15 +72,23 @@ function exportData() {
 
 function importData() {
     const form = document.getElementById('importForm');
-    const formData = new FormData(form);
+    const fileInput = document.getElementById('excelFile');
+    const file = fileInput.files[0];
 
+    // Проверка, указан ли файл
+    if (!file) {
+        alert('Пожалуйста, выберите файл для импорта.');
+        return; // Прекратить выполнение функции, если файл не выбран
+    }
+
+    const formData = new FormData(form);
     const directoryType = document.getElementById('directoryType').value;
     formData.append('directoryType', directoryType);
 
     document.getElementById('spinner').style.display = 'block';
     toggleElements(true);
 
-    fetch('/library/import', {
+    fetch('/local/modules/logistic.libraries/import', {
         method: 'POST',
         body: formData
     })
@@ -91,9 +99,31 @@ function importData() {
             document.getElementById('spinner').style.display = 'none';
             toggleElements(false);
 
+            // Очистить поле выбора файла
             document.getElementById('excelFile').value = '';
 
-            importResult();
+            // Обновить данные импорта на странице
+            document.getElementById('successCount').textContent = data.success.total || 0;
+            document.getElementById('errorCount').textContent = data.errors.total || 0;
+
+            // Заполнить таблицу с ошибками
+            const errorTable = document.getElementById('errorTable');
+            const errorTableBody = errorTable.querySelector('tbody');
+            errorTableBody.innerHTML = '';
+
+            if (data.errors.records && data.errors.records.length > 0) {
+                data.errors.records.forEach(error => {
+                    error.description.forEach(description => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `<td>${error.sheet}</td><td>${error.row}</td><td>${description}</td>`;
+                        errorTableBody.appendChild(row);
+                    });
+                });
+                errorTable.style.display = 'table';
+            } else {
+                errorTable.style.display = 'none';
+            }
+
             step(3);
         })
         .catch(error => {
@@ -103,6 +133,7 @@ function importData() {
             toggleElements(false);
         });
 }
+
 
 function toggleElements(disable) {
     const buttons = document.querySelectorAll('button[type="button"]');

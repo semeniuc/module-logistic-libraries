@@ -15,6 +15,16 @@ body {
     transition: width 0.6s;
 }
 
+td {
+    font-size: 12px;
+}
+
+.narrow-column {
+    width: 50px;
+    text-align: center;
+}
+
+
 .spinner {
     display: none;
     border: 16px solid #f3f3f3; /* Light grey */

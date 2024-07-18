@@ -49,7 +49,7 @@ $view->component('header', $data);
                            required>
                 </div>
                 <button type="button" class="btn btn-secondary mt-3" onclick="step(1)">Вернуться</button>
-                <button type="button" class="btn btn-primary" onclick="importData()">Отправить</button>
+                <button type="button" class="btn btn-primary mt-3" onclick="importData()">Отправить</button>
             </form>
         </div>
 
@@ -59,23 +59,24 @@ $view->component('header', $data);
             <div id="importSummary">
                 <p>Успешно добавлено записей: <span id="successCount">0</span></p>
                 <p>Кол-во записей с ошибками: <span id="errorCount">0</span></p>
-                <div id="errorDetails"></div>
-                <table class="table table-bordered mt-3" id="errorTable" style="display: none;">
-                    <thead>
-                    <tr>
-                        <th>№ строки</th>
-                        <th>Ошибка</th>
-                    </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+                <div id="errorDetails">
+                    <table class="table table-bordered mt-3" id="errorTable">
+                        <thead>
+                        <tr>
+                            <th>Лист</th>
+                            <th class="narrow-column">№</th>
+                            <th>Ошибка</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-secondary" onclick="step(1)">Вернуться</button>
             </div>
-            <button type="button" class="btn btn-secondary" onclick="step(1)">Вернуться</button>
         </div>
+        <div id="spinner" class="spinner" style="display: none;"></div>
     </div>
-    <div id="spinner" class="spinner" style="display: none;"></div>
-</div>
 
-<?php
+    <?php
 
-$view->component('footer'); ?>
+    $view->component('footer'); ?>
