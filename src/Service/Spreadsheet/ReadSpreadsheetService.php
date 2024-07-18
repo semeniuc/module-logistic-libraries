@@ -56,6 +56,7 @@ class ReadSpreadsheetService
 
             if (!empty($rows)) {
                 $rows = array_filter($rows, [$this, 'isNotEmptyRow']);
+                $rows = array_map([$this, 'trimRowLength'], $rows);
             }
         }
 
@@ -65,5 +66,10 @@ class ReadSpreadsheetService
     private function isNotEmptyRow(array $row): bool
     {
         return !empty(array_filter($row));
+    }
+
+    private function trimRowLength(array $row): array
+    {
+        return array_slice($row, 0, 49);
     }
 }
