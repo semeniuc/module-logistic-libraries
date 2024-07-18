@@ -32,9 +32,7 @@ class ImportService
 
             # Add
             $resultAddItems = $this->add($categoryName, $dataFromExcel);
-            $result = $this->output($categoryName, $resultAddItems);
-
-            echo json_encode($result);
+            $this->output($categoryName, $resultAddItems);
         }
     }
 
@@ -58,7 +56,7 @@ class ImportService
         return $this->addItemsService->execute($categoryName, $dataFromExcel);
     }
 
-    private function output(string $categoryName, array $resultAddItems): array
+    private function output(string $categoryName, array $resultAddItems): void
     {
         $result = [
             'success' => [
@@ -87,6 +85,8 @@ class ImportService
             }
         }
 
-        return $result;
+
+        header('Content-Type: application/json');
+        echo json_encode($result);
     }
 }
