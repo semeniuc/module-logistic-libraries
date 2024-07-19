@@ -20,7 +20,13 @@ class CreateSpreadsheetService
             foreach ($listSheets as $sheetId => $sheetName) {
                 $coordinates = $this->getCoordinatesForSheet($templateName, $sheetId);
                 $activeSheet = $spreadsheet->getSheetByName($sheetName);
-                $this->addData($activeSheet, $coordinates, $data[$sheetId]);
+
+                # Exception
+                if ($templateName === 'tariff-library' && $sheetId === 'container') {
+                    $this->addDataByContainer($activeSheet, $coordinates, $data[$sheetId]);
+                } else {
+                    $this->addData($activeSheet, $coordinates, $data[$sheetId]);
+                }
             }
         }
 
@@ -62,6 +68,30 @@ class CreateSpreadsheetService
                 }
 
                 $row++;
+            }
+        }
+    }
+    
+    private function addDataByContainer(Worksheet &$worksheet, array $coordinates, array $data): void
+    {
+        if ($data) {
+            $numberRowByCoc = $coordinates['rows']['first'];
+            $numberRowBySoc = $coordinates['rows']['first'];
+
+            foreach ($data as $item) {
+                if ($item[$coordinates['columns']['type']['id'][APP_ENV]] === 'COC') {
+                    $sliceCoordinates = array_slice($coordinates['columns'], 0, 7);
+                    $row = $numberRowByCoc++;
+                } else {
+                    $sliceCoordinates = array_slice($coordinates['columns'], 7, 8);
+                    $row = $numberRowBySoc++;
+                }
+
+                foreach ($sliceCoordinates as $coordinate) {
+                    if ($coordinate['column'] && $value = $item[$coordinate['id'][APP_ENV]]) {
+                        $worksheet->setCellValue($coordinate['column'] . $row, $value);
+                    }
+                }
             }
         }
     }

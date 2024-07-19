@@ -5,6 +5,14 @@ return [
         'first' => 3,
     ],
     'columns' => [
+        'type' => [
+            'id' => [
+                'dev' => 'UF_CRM_7_TYPE',
+                'prod' => null,
+            ],
+            'column' => null,
+        ],
+
         # COC
         'destination' => [
             'id' => [
@@ -93,7 +101,6 @@ return [
             ],
             'column' => 'L'
         ],
-
         'priceValidFromPart2' => [
             'id' => [
                 'dev' => 'UF_CRM_7_PRICE_VALID_FROM',
