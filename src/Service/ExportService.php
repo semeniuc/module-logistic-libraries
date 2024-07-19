@@ -8,7 +8,6 @@ use App\Service\Items\GetItemsService;
 use App\Service\Spreadsheet\CreateSpreadsheetService;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-use XMLWriter;
 
 class ExportService
 {
@@ -24,11 +23,6 @@ class ExportService
     public function execute(string $categoryName): void
     {
         $data = $this->getItemsService->execute($categoryName);
-
-        # test
-        $class = new XMLWriter();
-        dd([$class::class => '']);
-
         $spreadsheet = $this->createFileService->create($categoryName, $data);
 
         $this->output($spreadsheet);

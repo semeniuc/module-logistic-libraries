@@ -19,7 +19,6 @@ class CreateSpreadsheetService
 
             foreach ($listSheets as $sheetId => $sheetName) {
                 $coordinates = $this->getCoordinatesForSheet($templateName, $sheetId);
-
                 $activeSheet = $spreadsheet->getSheetByName($sheetName);
                 $this->addData($activeSheet, $coordinates, $data[$sheetId]);
             }
@@ -47,18 +46,17 @@ class CreateSpreadsheetService
     private function getCoordinatesForSheet(string $templateName, string $sheetId): array
     {
         $path = APP_PATH . "/config/{$templateName}/{$sheetId}.php";
-
-        return file_exists($path) ? (include $path)[APP_ENV] : [];
+        return file_exists($path) ? (include $path) : [];
     }
 
     private function addData(Worksheet &$worksheet, array $coordinates, array $data): void
     {
         if ($data) {
-            $row = $worksheet->getCellCollection()->getCurrentRow() + 1;
+            $row = $coordinates['rows']['first'];
 
             foreach ($data as $item) {
-                foreach ($coordinates as $coordinate) {
-                    if ($coordinate['column'] && $value = $item[$coordinate['id']]) {
+                foreach ($coordinates['columns'] as $coordinate) {
+                    if ($coordinate['column'] && $value = $item[$coordinate['id'][APP_ENV]]) {
                         $worksheet->setCellValue($coordinate['column'] . $row, $value);
                     }
                 }
