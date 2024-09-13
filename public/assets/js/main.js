@@ -12,5 +12,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('excelFile').value = '';
 });
 
+// Отключаем стандартное поведение (отправку формы)
+document.getElementById('submitBtn').addEventListener('click', function (event) {
+    event.preventDefault();
+});
+
+
 // Подключение подсказок
 BX.UI.Hint.init(BX('container'));

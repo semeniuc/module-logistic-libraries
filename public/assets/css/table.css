@@ -1,0 +1,105 @@
+/* Таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse !important;
+    margin-bottom: 20px;
+    background-color: #FFF;
+    /*border: 1px solid #E0E0E0;*/
+    border-left: none !important;
+    border-radius: 15px;
+    font-size: 13px;
+}
+
+table th, table td {
+    min-width: 50px;
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+table th {
+    background-color: #DBDFFB;
+    border-color: #f3f3f3 !important;
+    color: #333;
+    font-weight: bold;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+table th:last-child {
+    min-width: 260px;
+}
+
+table tbody td:last-child {
+    min-width: 260px;
+    text-align: left;
+}
+
+table tbody tr:hover {
+    background-color: rgba(225, 225, 225, 0.5);
+}
+
+/* Начальные стили для анимации */
+table tbody tr {
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Стили для появления строки */
+table tbody tr.show {
+    height: 30px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Стили для удаления строки */
+table tbody tr.hide {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* Стили для отмеченной строки */
+/*.table-row-selected {*/
+/*    background-color: rgba(238, 205, 208, 0.5);*/
+/*}*/
+
+/*.table-row-not-found,*/
+/*.table-row-not-found:hover,*/
+/*.table-row-not-found:active {*/
+/*    cursor: default;*/
+/*    background-color: #f8f9fa;*/
+/*    border: none !important;*/
+/*}*/
+
+/*.table-row-disabled,*/
+/*.table-row-disabled:hover,*/
+/*.table-row-disabled:active {*/
+/*    cursor: default;*/
+/*    background-color: rgba(246, 246, 246, 0.5);*/
+/*    color: rgba(51, 51, 51, 0.5);*/
+/*    text-decoration: line-through;*/
+/*    !*border: none !important;*!*/
+/*}*/
+
+/*table td.select-box,*/
+/*table th:first-child {*/
+/*    position: absolute;*/
+/*    top: 14px;*/
+/*    left: -25px;*/
+/*    border: none;*/
+/*    padding: 0;*/
+/*    width: 0;*/
+/*}*/
+
+/*table th:first-child {*/
+/*    background-color: #f8f9fa;*/
+/*}*/
+
+/*input[type="checkbox"] {*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*input[type="checkbox"]:disabled {*/
+/*    cursor: default;*/
+/*}*/

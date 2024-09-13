@@ -1,7 +1,6 @@
 export function step(step) {
     document.querySelectorAll('.step').forEach((el) => el.classList.remove('active'));
     document.querySelectorAll('.step')[step - 1].classList.add('active');
-
     updateProgressBar(step);
 }
 

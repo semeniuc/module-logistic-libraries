@@ -8,7 +8,15 @@ use Bitrix\Main\UI\Extension;
  * @var $data = []
  * */
 
-Extension::load(['ui.buttons', 'ui.buttons.icons', 'ui.forms', 'ui.progressbar', 'ui.dialogs.messagebox', 'ui.hint']);
+Extension::load([
+    'ui.buttons',
+    'ui.buttons.icons',
+    'ui.forms',
+    'ui.progressbar',
+    'ui.dialogs.messagebox',
+    'ui.hint',
+    'ui.alerts'
+]);
 
 $view->component('header', $data);
 
@@ -24,7 +32,7 @@ $view->component('header', $data);
     <div id="multiStepForm">
         <!-- Шаг 1: Выбор категории и действия -->
 
-        <div class="step active">
+        <div class="step">
             <div class="form-group">
                 <div class="ui-ctl ui-ctl-after-icon ui-ctl-dropdown" style="display: inline-block;">
                     <div class="ui-ctl-after ui-ctl-icon-angle"></div>
@@ -34,6 +42,10 @@ $view->component('header', $data);
                 </div>
                 <span data-hint="Выберите категорию справочников которые Вы планируете экспортировать или импортировать."></span>
             </div>
+            <div class="ui-alert ui-alert-close-animate">
+                <span class="ui-alert-message"><strong>Внимание!</strong> Текст предупреждения находится здесь.</span>
+                <span class="ui-alert-close-btn" onclick="this.parentNode.style.display = 'none';"></span>
+            </div>
             <div class="form-group">
                 <button class="ui-btn ui-btn-icon-download" onclick="exportData()">Экспорт</button>
                 <button class="ui-btn ui-btn-icon-add" onclick="step(2)">Импорт</button>
@@ -41,7 +53,7 @@ $view->component('header', $data);
         </div>
 
         <!-- Шаг 2: Импорт -->
-        <div class="step" id="importStep">
+        <div class="step">
             <h4>Импорт данных</h4>
             <form id="importForm" enctype="multipart/form-data">
                 <div class="form-group">
@@ -64,7 +76,7 @@ $view->component('header', $data);
         </div>
 
         <!-- Шаг 3: Результат импорта -->
-        <div class="step">
+        <div class="step active">
             <h4>Результат импорта</h4>
             <div id="importSummary">
                 <p>Успешно добавлено записей: <span id="successCount">0</span></p>
@@ -78,10 +90,17 @@ $view->component('header', $data);
                             <th>Ошибка</th>
                         </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody>
+                        <tr>
+                            <td>Автоперевозки</td>
+                            <td>132</td>
+                            <td>Обязательное поле не заполнено</td>
+                        </tr>
+                        </tbody>
                     </table>
                 </div>
-                <button type="button" class="btn btn-secondary" onclick="step(1)">Вернуться</button>
+                <button class="ui-btn" onclick="step(1)">Вернуться</button>
+                <button class="ui-btn ui-btn-icon-angle-up"></button>
             </div>
         </div>
         <div id="spinner" class="spinner" style="display: none;"></div>
