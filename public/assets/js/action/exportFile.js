@@ -1,4 +1,4 @@
-import {toggleElements} from "../view/steps.js";
+import {showLoading, toggleElements} from "../view/steps.js";
 
 export function exportData() {
     const directoryType = document.getElementById('directoryType').value;
@@ -8,7 +8,7 @@ export function exportData() {
         categoryName: directoryType
     };
 
-    document.getElementById('spinner').style.display = 'block';
+    showLoading(true);
     toggleElements(true);
 
     fetch('/local/modules/logistic.libraries/export', {
@@ -29,13 +29,13 @@ export function exportData() {
             a.click();
             window.URL.revokeObjectURL(url);
 
-            document.getElementById('spinner').style.display = 'none';
+            showLoading(false);
             toggleElements(false);
 
         })
         .catch(error => {
             console.error('Download error:', error);
-            document.getElementById('spinner').style.display = 'none';
+            showLoading(false);
             toggleElements(false);
         });
 }

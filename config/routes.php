@@ -15,5 +15,5 @@ return [
     Route::post(APP_URL . 'import', [LibraryDataController::class, 'import']),
 
     # Test
-    Route::get(APP_URL, [NewStyleController::class, 'index']),
+    Route::get(APP_URL . 'table', [NewStyleController::class, 'index']),
 ];

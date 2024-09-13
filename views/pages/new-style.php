@@ -8,7 +8,7 @@ use Bitrix\Main\UI\Extension;
  * @var $data = []
  * */
 
-Extension::load(['ui.buttons', 'ui.buttons.icons', 'ui.forms', 'ui.progressbar', 'ui.dialogs.messagebox']);
+Extension::load(['ui.buttons', 'ui.buttons.icons', 'ui.forms', 'ui.progressbar', 'ui.dialogs.messagebox', 'ui.hint']);
 
 $view->component('header', $data);
 
@@ -26,12 +26,13 @@ $view->component('header', $data);
 
         <div class="step active">
             <div class="form-group">
-                <div class="ui-ctl ui-ctl-after-icon ui-ctl-dropdown">
+                <div class="ui-ctl ui-ctl-after-icon ui-ctl-dropdown" style="display: inline-block;">
                     <div class="ui-ctl-after ui-ctl-icon-angle"></div>
                     <select class="ui-ctl-element" id="directoryType" name="directoryType">
                         <option value="tariff-library">Справочники тарификатора</option>
                     </select>
                 </div>
+                <span data-hint="Выберите категорию справочников которые Вы планируете экспортировать или импортировать."></span>
             </div>
             <div class="form-group">
                 <button class="ui-btn ui-btn-icon-download" onclick="exportData()">Экспорт</button>
@@ -85,7 +86,7 @@ $view->component('header', $data);
         </div>
         <div id="spinner" class="spinner" style="display: none;"></div>
     </div>
+</div>
+<?php
 
-    <?php
-
-    $view->component('footer'); ?>
+$view->component('footer'); ?>

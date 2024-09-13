@@ -1,57 +1,91 @@
-import {toggleElements} from "../view/steps.js";
+import {showLoading, toggleElements} from "../view/steps.js";
 
 export function importData() {
     const form = document.getElementById('importForm');
-
-    const formData = new FormData(form);
+    const formData = new FormData(form)
     const directoryType = document.getElementById('directoryType').value;
+
     formData.append('directoryType', directoryType);
 
-    document.getElementById('spinner').style.display = 'block';
+    showLoading(true);
     toggleElements(true);
 
-    fetch('/local/modules/logistic.libraries/import', {
-        method: 'POST',
-        body: formData
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
+    console.log(formData);
+    console.log(window.location.origin + '/local/modules/logistic.libraries/import');
 
-            document.getElementById('spinner').style.display = 'none';
-            toggleElements(false);
+    step(3);
+    close();
 
-            // Очистить поле выбора файла
-            document.getElementById('excelFile').value = '';
 
-            // Обновить данные импорта на странице
-            document.getElementById('successCount').textContent = data.success.total || 0;
-            document.getElementById('errorCount').textContent = data.errors.total || 0;
+    // fetch('/local/modules/logistic.libraries/import', {
+    //     method: 'POST',
+    //     body: JSON.stringify({key: 'value'}),
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // })
+    //     .then(response => {
+    //         if (!response.ok) {
+    //             throw new Error(`HTTP error! Status: ${response.status}`);
+    //         }
+    //         return response.json();
+    //     })
+    //     .then(data => {
+    //         console.log('Success:', data);
+    //         showLoading(false);
+    //         toggleElements(false);
+    //     })
+    //     .catch(error => {
+    //         console.error('Import error:', error);
+    //         showLoading(false);
+    //         toggleElements(false);
+    //     });
 
-            // Заполнить таблицу с ошибками
-            const errorTable = document.getElementById('errorTable');
-            const errorTableBody = errorTable.querySelector('tbody');
-            errorTableBody.innerHTML = '';
 
-            if (data.errors.records && data.errors.records.length > 0) {
-                data.errors.records.forEach(error => {
-                    error.description.forEach(description => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `<td>${error.sheet}</td><td>${error.row}</td><td>${description}</td>`;
-                        errorTableBody.appendChild(row);
-                    });
-                });
-                errorTable.style.display = 'table';
-            } else {
-                errorTable.style.display = 'none';
-            }
-
-            step(3);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-
-            document.getElementById('spinner').style.display = 'none';
-            toggleElements(false);
-        });
+    // fetch('/local/modules/logistic.libraries/import', {
+    //     method: 'POST',
+    //     body: formData,
+    //     headers: {
+    //         'Cache-Control': 'no-cache'
+    //     }
+    // })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         console.log('Success:', data);
+    //
+    //         showLoading(false);
+    //         toggleElements(false);
+    //
+    //         // Очистить поле выбора файла
+    //         document.getElementById('excelFile').value = '';
+    //
+    //         // Обновить данные импорта на странице
+    //         document.getElementById('successCount').textContent = data.success.total || 0;
+    //         document.getElementById('errorCount').textContent = data.errors.total || 0;
+    //
+    //         // Заполнить таблицу с ошибками
+    //         const errorTable = document.getElementById('errorTable');
+    //         const errorTableBody = errorTable.querySelector('tbody');
+    //         errorTableBody.innerHTML = '';
+    //
+    //         if (data.errors.records && data.errors.records.length > 0) {
+    //             data.errors.records.forEach(error => {
+    //                 error.description.forEach(description => {
+    //                     const row = document.createElement('tr');
+    //                     row.innerHTML = `<td>${error.sheet}</td><td>${error.row}</td><td>${description}</td>`;
+    //                     errorTableBody.appendChild(row);
+    //                 });
+    //             });
+    //             errorTable.style.display = 'table';
+    //         } else {
+    //             errorTable.style.display = 'none';
+    //         }
+    //
+    //         step(3);
+    //     })
+    //     .catch(error => {
+    //         console.error('Error:', error);
+    //         showLoading(false);
+    //         toggleElements(false);
+    //     });
 }

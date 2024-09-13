@@ -11,3 +11,6 @@ window.importData = importData;
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('excelFile').value = '';
 });
+
+// Подключение подсказок
+BX.UI.Hint.init(BX('container'));
