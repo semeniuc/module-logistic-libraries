@@ -24,9 +24,6 @@ export function importData() {
     })
         .then(response => response.json())
         .then(data => {
-            showLoading(false);
-            toggleElements(false);
-
             // Очистить поле выбора файла
             document.getElementById('excelFile').value = '';
 
@@ -37,11 +34,14 @@ export function importData() {
             // Сохранить записи ошибок для пагинации
             errorsData = data.errors.records || [];
 
-            // console.log('errorsData:', errorsData);
+            // Сменить шаг
             step(3);
 
             // Отобразить записи для первой страницы
             displayRecords(currentPage);
+
+            showLoading(false);
+            toggleElements(false);
         })
         .catch(error => {
             console.error('Error:', error);

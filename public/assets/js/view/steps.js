@@ -9,31 +9,18 @@ export function toggleElements(isDisable) {
     const selects = document.querySelectorAll('select');
     const inputs = document.querySelectorAll('input');
 
+    console.log('buttons: ', buttons);
+
     buttons.forEach(button => {
         button.disabled = isDisable;
-        if (isDisable) {
-            button.classList.add('disabled-button');
-        } else {
-            button.classList.remove('disabled-button');
-        }
     });
 
     selects.forEach(select => {
         select.disabled = isDisable;
-        if (isDisable) {
-            select.classList.add('disabled-select');
-        } else {
-            select.classList.remove('disabled-select');
-        }
     });
 
     inputs.forEach(input => {
         input.disabled = isDisable;
-        if (isDisable) {
-            input.classList.add('disabled-input');
-        } else {
-            input.classList.remove('disabled-input');
-        }
     });
 }
 

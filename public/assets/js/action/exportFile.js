@@ -29,6 +29,12 @@ export function exportData() {
             a.click();
             window.URL.revokeObjectURL(url);
 
+
+            const notify = document.getElementById('exportMessage');
+            setTimeout(() => {
+                notify.hidden = false;
+            }, 100);
+
             showLoading(false);
             toggleElements(false);
 

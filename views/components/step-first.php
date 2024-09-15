@@ -11,8 +11,8 @@
     </div>
     <span data-hint="Выберите категорию справочников которые Вы планируете экспортировать или импортировать."></span>
 </div>
-<div class="ui-alert ui-alert-close-animate">
-    <span class="ui-alert-message"><strong>Внимание!</strong> Текст предупреждения находится здесь.</span>
+<div id="exportMessage" class="ui-alert ui-alert-close-animate" hidden>
+    <span class="ui-alert-message"><strong>Экспорт</strong> успешно завершён. Проверьте папку "Загрузки".</span>
     <span class="ui-alert-close-btn" onclick="this.parentNode.style.display = 'none';"></span>
 </div>
 <div class="form-group">
