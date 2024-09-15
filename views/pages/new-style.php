@@ -32,87 +32,21 @@ $view->component('header', $data);
     </div>
     <div id="multiStepForm">
         <!-- Шаг 1: Выбор категории и действия -->
-
         <div class="step">
-            <div class="form-group">
-                <div class="ui-ctl ui-ctl-after-icon ui-ctl-dropdown" style="display: inline-block;">
-                    <div class="ui-ctl-after ui-ctl-icon-angle"></div>
-                    <select class="ui-ctl-element" id="directoryType" name="directoryType">
-                        <option value="tariff-library">Справочники тарификатора</option>
-                    </select>
-                </div>
-                <span data-hint="Выберите категорию справочников которые Вы планируете экспортировать или импортировать."></span>
-            </div>
-            <div class="ui-alert ui-alert-close-animate">
-                <span class="ui-alert-message"><strong>Внимание!</strong> Текст предупреждения находится здесь.</span>
-                <span class="ui-alert-close-btn" onclick="this.parentNode.style.display = 'none';"></span>
-            </div>
-            <div class="form-group">
-                <button class="ui-btn ui-btn-icon-download" onclick="exportData()">Экспорт</button>
-                <button class="ui-btn ui-btn-icon-add" onclick="step(2)">Импорт</button>
-            </div>
+            <?php $view->component('step-first'); ?>
         </div>
 
         <!-- Шаг 2: Импорт -->
         <div class="step">
-            <h4>Импорт данных</h4>
-            <form id="importForm" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label class="ui-ctl ui-ctl-file-drop" id="fileDropArea">
-                        <div class="ui-ctl-label-text">
-                            <span>Выберите и загрузите файл</span>
-                            <small>Поддерживаются файлы с расширением ".xlsx"</small>
-                        </div>
-                        <input type="file" class="ui-ctl-element" id="excelFile" name="excelFile"
-                               accept=".xlsx"
-                               required>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <button class="ui-btn" onclick="step(1)">Вернуться</button>
-                    <button id="submitBtn" class="ui-btn ui-btn-success" onclick="importData()" disabled>Отправить
-                    </button>
-                </div>
-            </form>
+            <?php $view->component('step-two'); ?>
         </div>
 
         <!-- Шаг 3: Результат импорта -->
         <div class="step active">
-            <h4>Результат импорта</h4>
-
-            <div id="importNotification">
-                <div>
-                    <span>Добавлено записей: </span>
-                    <div class="ui-counter  ui-counter-lg ui-counter-success">
-                        <div id="successCount" class="ui-counter-inner">0</div>
-                    </div>
-                </div>
-                <div>
-                    <span>Кол-во ошибок: </span>
-                    <div class="ui-counter  ui-counter-lg">
-                        <div id="errorCount" class="ui-counter-inner">0</div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="importSummary">
-                <table class="table table-bordered mt-3" id="errorTable">
-                    <thead>
-                    <tr>
-                        <th>Лист</th>
-                        <th class="narrow-column">№</th>
-                        <th>Ошибка</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <div>
-                    <button class="ui-btn" onclick="step(1)">Вернуться</button>
-                    <button class="ui-btn ui-btn-icon-angle-up"></button>
-                </div>
-            </div>
+            <?php $view->component('step-third'); ?>
         </div>
+
+        <!-- Спиннер-->
         <div id="spinner" class="spinner" style="display: none;"></div>
     </div>
 </div>
