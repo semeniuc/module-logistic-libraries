@@ -1,69 +1,29 @@
-const recordsPerPage = 10;  // Количество записей на одной странице
-let currentPage = 1;        // Текущая страница
+import {currentPage, errorsData, recordsPerPage, setCurrentPage} from "../action/importFile.js";
+import {displayRecords} from "./table.js";
 
-function displayRecords(data, page) {
-    const errorTableBody = document.querySelector('#errorTable tbody');
-    errorTableBody.innerHTML = ''; // Очистить предыдущие записи
-
-    // Рассчитать начало и конец текущей страницы
-    const start = (page - 1) * recordsPerPage;
-    const end = start + recordsPerPage;
-
-    // Отобразить только нужные записи для текущей страницы
-    const recordsToDisplay = data.slice(start, end);
-    recordsToDisplay.forEach(error => {
-        error.description.forEach(description => {
-            const row = document.createElement('tr');
-            row.innerHTML = `<td>${error.sheet}</td><td>${error.row}</td><td>${description}</td>`;
-            errorTableBody.appendChild(row);
-
-            // Добавляем класс для анимации
-            setTimeout(() => {
-                row.classList.add('show');
-            }, 100);
-        });
-    });
-
-    updatePagination(data.length);  // Обновляем кнопки пагинации
-}
-
-function updatePagination(totalRecords) {
+export function updatePagination() {
     const pagination = document.getElementById('pagination');
-    pagination.innerHTML = ''; // Очистить пагинацию
+    const totalPages = Math.ceil(errorsData.length / recordsPerPage);
 
-    const totalPages = Math.ceil(totalRecords / recordsPerPage);
-
-    // Создать кнопки для каждой страницы
-    for (let i = 1; i <= totalPages; i++) {
-        const pageBtn = document.createElement('button');
-        pageBtn.textContent = i;
-        pageBtn.classList.add('page-btn');
-        if (i === currentPage) {
-            pageBtn.classList.add('active');
+    // "Назад"
+    const prevBtn = document.getElementById('prevBtn');
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.addEventListener('click', function () {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+            displayRecords(currentPage);
         }
-
-        pageBtn.addEventListener('click', function () {
-            currentPage = i;
-            displayRecords(data, currentPage);
-        });
-
-        pagination.appendChild(pageBtn);
-    }
-}
-
-// Вызов функции при получении данных
-fetch('/local/modules/logistic.libraries/import', {
-    method: 'POST',
-    body: formData,
-    headers: {
-        'Cache-Control': 'no-cache'
-    }
-})
-    .then(response => response.json())
-    .then(data => {
-        // Отобразить данные для первой страницы
-        displayRecords(data.errors.records, currentPage);
-    })
-    .catch(error => {
-        console.error('Error:', error);
     });
+    pagination.appendChild(prevBtn);
+
+    // "Вперед"
+    const nextBtn = document.getElementById('nextBtn');
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.addEventListener('click', function () {
+        if (currentPage < totalPages) {
+            setCurrentPage(currentPage + 1);
+            displayRecords(currentPage);
+        }
+    });
+    pagination.appendChild(nextBtn);
+}

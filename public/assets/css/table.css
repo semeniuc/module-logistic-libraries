@@ -10,7 +10,7 @@
 
 /* Таблицы */
 table {
-    background-color: #F9FAFB7A;
+    background-color: #F9FAFB2E;
     border-radius: 15px;
     font-size: 13px;
 }
@@ -62,10 +62,18 @@ table tbody tr.show {
 }
 
 /* Кнопки */
-#importSummary div {
-    display: inline-block;
+#buttonRow {
+    display: flex;
+    justify-content: space-between; /* Разделить кнопки по сторонам */
+    align-items: center; /* Выравнивание по вертикали */
+    margin-top: 10px;
 }
 
-#pagination {
-    align-items: end;
+.left-buttons, .right-buttons {
+    display: flex;
+    gap: 10px; /* Отступ между кнопками */
+}
+
+.right-buttons {
+    justify-content: flex-end;
 }
