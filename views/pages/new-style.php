@@ -15,7 +15,8 @@ Extension::load([
     'ui.progressbar',
     'ui.dialogs.messagebox',
     'ui.hint',
-    'ui.alerts'
+    'ui.alerts',
+    'ui.counter'
 ]);
 
 $view->component('header', $data);
@@ -78,29 +79,38 @@ $view->component('header', $data);
         <!-- Шаг 3: Результат импорта -->
         <div class="step active">
             <h4>Результат импорта</h4>
-            <div id="importSummary">
-                <p>Успешно добавлено записей: <span id="successCount">0</span></p>
-                <p>Кол-во записей с ошибками: <span id="errorCount">0</span></p>
-                <div id="errorDetails">
-                    <table class="table table-bordered mt-3" id="errorTable">
-                        <thead>
-                        <tr>
-                            <th>Лист</th>
-                            <th class="narrow-column">№</th>
-                            <th>Ошибка</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Автоперевозки</td>
-                            <td>132</td>
-                            <td>Обязательное поле не заполнено</td>
-                        </tr>
-                        </tbody>
-                    </table>
+
+            <div id="importNotification">
+                <div>
+                    <span>Добавлено записей: </span>
+                    <div class="ui-counter  ui-counter-lg ui-counter-success">
+                        <div id="successCount" class="ui-counter-inner">0</div>
+                    </div>
                 </div>
-                <button class="ui-btn" onclick="step(1)">Вернуться</button>
-                <button class="ui-btn ui-btn-icon-angle-up"></button>
+                <div>
+                    <span>Кол-во ошибок: </span>
+                    <div class="ui-counter  ui-counter-lg">
+                        <div id="errorCount" class="ui-counter-inner">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="importSummary">
+                <table class="table table-bordered mt-3" id="errorTable">
+                    <thead>
+                    <tr>
+                        <th>Лист</th>
+                        <th class="narrow-column">№</th>
+                        <th>Ошибка</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div>
+                    <button class="ui-btn" onclick="step(1)">Вернуться</button>
+                    <button class="ui-btn ui-btn-icon-angle-up"></button>
+                </div>
             </div>
         </div>
         <div id="spinner" class="spinner" style="display: none;"></div>

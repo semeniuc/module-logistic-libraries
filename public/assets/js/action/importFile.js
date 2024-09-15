@@ -42,6 +42,11 @@ export function importData() {
                         const row = document.createElement('tr');
                         row.innerHTML = `<td>${error.sheet}</td><td>${error.row}</td><td>${description}</td>`;
                         errorTableBody.appendChild(row);
+
+                        // Добавляем класс с небольшой задержкой
+                        setTimeout(() => {
+                            row.classList.add('show');
+                        }, 100);
                     });
                 });
                 errorTable.style.display = 'table';
