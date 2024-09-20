@@ -23,6 +23,8 @@ class logistic_libraries extends CModule
     {
         ModuleManager::registerModule($this->MODULE_ID);
 
+        $this->InstallEvents();
+
         global $APPLICATION;
 
         $APPLICATION->IncludeAdminFile(
@@ -35,11 +37,25 @@ class logistic_libraries extends CModule
     {
         ModuleManager::unRegisterModule($this->MODULE_ID);
 
+        $this->UnInstallEvents();
+
         global $APPLICATION;
 
         $APPLICATION->IncludeAdminFile(
             "Module removed",
             __DIR__ . '/unstep.php'
         );
+    }
+
+    public function InstallEvents(): void
+    {
+        $eventManager = EventManager::getInstance();
+        $eventManager->registerEventHandler('main', 'onProlog', $this->MODULE_ID, '\App\Listener\MenuTabListener', 'handler');
+    }
+
+    public function UnInstallEvents(): void
+    {
+        $eventManager = EventManager::getInstance();
+        $eventManager->unRegisterEventHandler('main', 'onProlog', $this->MODULE_ID, '\App\Listener\MenuTabListener', 'handler');
     }
 }
