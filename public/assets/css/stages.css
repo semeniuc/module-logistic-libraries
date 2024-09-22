@@ -16,6 +16,7 @@
     height: 40px;
     border-radius: 4px 0 0 4px;
     background-color: var(--default);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .stage::before {

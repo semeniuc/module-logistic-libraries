@@ -2,7 +2,6 @@
 
 ?>
 
-<h4>Результат импорта</h4>
 <div id="importNotification">
     <div>
         <span>Добавлено записей: </span>

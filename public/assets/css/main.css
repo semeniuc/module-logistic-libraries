@@ -32,6 +32,7 @@ select, option {
 }
 
 #multiStepForm {
+    position: relative;
     display: block;
     width: 100%;
     min-height: 450px;
@@ -48,6 +49,20 @@ td {
 .narrow-column {
     width: 50px;
     text-align: center;
+}
+
+.button-to-bottom {
+    position: absolute;
+    bottom: 15px; /* Расстояние от низа */
+    left: 30px;
+    right: 0;
+    display: flex;
+    gap: 8px; /* Расстояние между кнопками */
+}
+
+.file-message {
+    font-size: 14px;
+    color: #828B97;
 }
 
 .spinner {

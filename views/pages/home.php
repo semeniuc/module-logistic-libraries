@@ -9,15 +9,11 @@ use Bitrix\Main\UI\Extension;
  * */
 
 Extension::load([
-//    'ui.stageflow',
     'ui.buttons',
-//    'ui.buttons.icons',
     'ui.forms',
-//    'ui.progressbar',
-//    'ui.dialogs.messagebox',
 //    'ui.hint',
-//    'ui.alerts',
-//    'ui.counter'
+    'ui.alerts',
+    'ui.counter'
 ]);
 
 $view->component('header', $data);
