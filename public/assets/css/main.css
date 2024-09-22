@@ -1,6 +1,23 @@
+@import "content.css";
+@import "stages.css";
+@import "table.css";
+@import "section.css";
+
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #EEF2F4;
+}
+
+.container {
+    min-width: 1400px;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 26px;
 }
 
 select, option {
@@ -13,10 +30,6 @@ select, option {
 
 .step.active {
     display: block;
-}
-
-.progress-bar {
-    transition: width 0.6s;
 }
 
 td {

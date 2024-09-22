@@ -1,5 +1,5 @@
 // Функция для установки активного этапа и изменения цвета предыдущих
-function setActiveStage(activeStage) {
+export function setActiveStage(activeStage) {
     // Получаем все этапы
     const stages = document.querySelectorAll('.stage');
 
@@ -13,7 +13,9 @@ function setActiveStage(activeStage) {
             stage.classList.add('active');
 
             // Меняем цвет в зависимости от активного этапа
-            if (activeStage === 2) {
+            if (activeStage === 1) {
+                document.documentElement.style.setProperty('--stage-1', '#2FC6F6');
+            } else if (activeStage === 2) {
                 document.documentElement.style.setProperty('--stage-1', 'var(--stage-2)');
             } else if (activeStage === 3) {
                 document.documentElement.style.setProperty('--stage-1', 'var(--stage-3)');
@@ -24,6 +26,3 @@ function setActiveStage(activeStage) {
         }
     });
 }
-
-// Пример: установить активный этап (индекс начинается с 0)
-setActiveStage(3); // Активен второй этап (индекс 1)
