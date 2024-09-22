@@ -34,6 +34,6 @@ class View
         }
 
         extract($data);
-        include_once $path;
+        include $path;
     }
 }

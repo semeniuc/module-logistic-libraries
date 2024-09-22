@@ -4,7 +4,7 @@
  */
 ?>
 
-<div id="title-section">
+<div class="title-section">
     <div class="sub-name">
         Стадия
     </div>

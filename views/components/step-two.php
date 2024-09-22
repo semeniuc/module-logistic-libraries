@@ -2,7 +2,6 @@
 
 ?>
 
-<h4>Импорт данных</h4>
 <form id="importForm" enctype="multipart/form-data">
     <div class="form-group">
         <label class="ui-ctl ui-ctl-file-drop" id="fileDropArea">

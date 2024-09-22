@@ -1,7 +1,6 @@
-@import "content.css";
 @import "stages.css";
-@import "table.css";
 @import "section.css";
+@import "table.css";
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -30,6 +29,16 @@ select, option {
 
 .step.active {
     display: block;
+}
+
+#multiStepForm {
+    display: block;
+    width: 100%;
+    min-height: 450px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 td {
