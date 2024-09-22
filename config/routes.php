@@ -2,7 +2,7 @@
 
 use App\Controller\HomeController;
 use App\Controller\LibraryDataController;
-use App\Controller\NewStyleController;
+use App\Controller\NewHomeController;
 use App\Kernel\Router\Route;
 
 return [
@@ -15,5 +15,5 @@ return [
     Route::post(APP_URL . 'import', [LibraryDataController::class, 'import']),
 
     # Test
-    
+    Route::get(APP_URL . 'new', [NewHomeController::class, 'index']),
 ];
