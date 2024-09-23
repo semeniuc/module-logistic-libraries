@@ -7,9 +7,11 @@ export function step(step) {
 }
 
 export function toggleElements(isDisable) {
-    const buttons = document.querySelectorAll('button[type="button"]');
+    const buttons = document.querySelectorAll('button');
     const selects = document.querySelectorAll('select');
     const inputs = document.querySelectorAll('input');
+
+    document.getElementById('excelFile').disabled = true;
 
     buttons.forEach(button => {
         button.disabled = isDisable;

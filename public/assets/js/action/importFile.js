@@ -34,6 +34,13 @@ export function importData() {
             // Сохранить записи ошибок для пагинации
             errorsData = data.errors.records || [];
 
+            if (!data.errors.total) {
+                document.getElementById('errorTable').style.display = 'none';
+                document.getElementById('pagination').style.display = 'none';
+                document.getElementById('btnToUp').style.display = 'none';
+                // document.querySelector('.left-buttons').classList.add('button-to-bottom');
+            }
+
             // Сменить шаг
             step(3);
 

@@ -44,9 +44,7 @@ function addCustomLinkToLeftMenu() {
 
     // Найти контейнер левого меню и добавить новый элемент
     var leftMenuContainer = document.querySelector('ul.menu-items');
-    if (!leftMenuContainer) {
-        console.error('Не удалось найти контейнер левого меню');
-    } else {
+    if (leftMenuContainer) {
         leftMenuContainer.appendChild(menuItem);
     }
 }

@@ -16,6 +16,6 @@
     <span class="ui-alert-close-btn" onclick="this.parentNode.style.display = 'none';"></span>
 </div>
 <div class="form-group button-to-bottom">
-    <button class="ui-btn" onclick="exportData()">Экспорт</button>
-    <button class="ui-btn ui-btn-success" onclick="step(2)">Импорт</button>
+    <button class="ui-btn btn-next" onclick="step(2)">Импорт</button>
+    <button class="ui-btn btn-default" onclick="exportData()">Экспорт</button>
 </div>

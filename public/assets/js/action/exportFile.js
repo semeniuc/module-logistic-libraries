@@ -1,4 +1,4 @@
-import {showLoading, toggleElements} from "../view/steps.js";
+import {showLoading} from "../view/steps.js";
 
 export function exportData() {
     const directoryType = document.getElementById('directoryType').value;
@@ -9,7 +9,6 @@ export function exportData() {
     };
 
     showLoading(true);
-    toggleElements(true);
 
     fetch('/local/modules/logistic.libraries/export', {
         method: 'POST',
@@ -36,12 +35,10 @@ export function exportData() {
             }, 100);
 
             showLoading(false);
-            toggleElements(false);
 
         })
         .catch(error => {
             console.error('Download error:', error);
             showLoading(false);
-            toggleElements(false);
         });
 }

@@ -11,8 +11,7 @@
         <span id="file-message" class="file-message" style="margin-left: 10px;">Файл не выбран</span>
     </div>
     <div class="form-group button-to-bottom">
-        <button class="ui-btn" onclick="step(1)">Вернуться</button>
-        <button id="submitBtn" class="ui-btn ui-btn-success" onclick="importData()" disabled>Отправить
-        </button>
+        <button id="submitBtn" class="ui-btn btn-next" onclick="importData()" disabled>Отправить</button>
+        <button class="ui-btn btn-default" onclick="step(1)">Вернуться</button>
     </div>
 </form>

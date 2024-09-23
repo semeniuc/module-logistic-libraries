@@ -1,6 +1,7 @@
 @import "stages.css";
 @import "section.css";
 @import "table.css";
+@import "buttons.css";
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -49,15 +50,6 @@ td {
 .narrow-column {
     width: 50px;
     text-align: center;
-}
-
-.button-to-bottom {
-    position: absolute;
-    bottom: 15px; /* Расстояние от низа */
-    left: 30px;
-    right: 0;
-    display: flex;
-    gap: 8px; /* Расстояние между кнопками */
 }
 
 .file-message {
