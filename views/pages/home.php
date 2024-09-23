@@ -10,6 +10,7 @@ use Bitrix\Main\UI\Extension;
 
 Extension::load([
     'ui.buttons',
+    'ui.buttons.icons',
     'ui.forms',
 //    'ui.hint',
     'ui.alerts',

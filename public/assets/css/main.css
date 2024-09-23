@@ -65,6 +65,10 @@ td {
     color: #828B97;
 }
 
+#exportMessage {
+    max-width: 450px !important;
+}
+
 .spinner {
     display: none;
     border: 16px solid #f3f3f3; /* Light grey */

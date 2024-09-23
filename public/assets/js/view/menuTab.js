@@ -53,5 +53,5 @@ function addCustomLinkToLeftMenu() {
 
 // Вызов функции для добавления ссылки в левое меню
 document.addEventListener('DOMContentLoaded', function () {
-    // addCustomLinkToLeftMenu();
+    addCustomLinkToLeftMenu();
 });
