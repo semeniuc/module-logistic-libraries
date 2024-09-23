@@ -1,11 +1,17 @@
 /* Счетчики */
-#importNotification div {
-    display: inline-block;
-    margin-right: 6px;
+#importNotification {
+    display: flex;
+    margin-bottom: 15px;
 }
 
-#importNotification div div {
-    margin-bottom: 6px;
+#importNotification > div {
+    display: flex;
+    align-items: center; /* Выравнивание по вертикали */
+    margin-right: 20px;
+}
+
+.ui-counter {
+    margin-left: 6px; /* Отступ между текстом и счётчиком */
 }
 
 /* Таблицы */
@@ -13,6 +19,8 @@ table {
     background-color: #F9FAFB2E;
     border-radius: 15px;
     font-size: 13px;
+    border-collapse: collapse;
+    margin-bottom: 0 !important;
 }
 
 table th, table td {

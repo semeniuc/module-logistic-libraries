@@ -20,7 +20,7 @@
 <div id="importSummary">
     <div class="row">
         <div class="col">
-            <table class="table table-bordered mt-3" id="errorTable">
+            <table class="table table-bordered" id="errorTable">
                 <thead>
                 <tr>
                     <th>Лист</th>
@@ -31,11 +31,8 @@
                 <tbody>
                 </tbody>
             </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div id="btn-area" class="form-group">
+
+            <div id="btn-area">
                 <button id="btn-close" class="ui-btn btn-default">Завершить</button>
                 <button id="btn-to-up" class="ui-btn  btn-default ui-btn-icon-angle-up"
                         onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"></button>

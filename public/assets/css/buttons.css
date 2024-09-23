@@ -48,13 +48,16 @@
     color: #515B67;
 }
 
-
 /* Step 3 */
 #btn-area {
     display: flex;
-    justify-content: space-between; /* Распределение кнопок */
-    align-items: center; /* Выравнивание по вертикали */
-    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+    padding: 20px 0;
+    border-top: 1px solid #ccc;
 }
 
 #btn-close {
