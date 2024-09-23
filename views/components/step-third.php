@@ -33,18 +33,12 @@
             </table>
         </div>
     </div>
-    <div class="row" id="buttonRow">
-        <div class="col-md-6">
-            <div class="left-buttons">
-                <button class="ui-btn btn-default" onclick="step(1)">Вернуться</button>
-                <button id="btnToUp" class="ui-btn ui-btn-icon-angle-up"
+    <div class="row">
+        <div class="col">
+            <div id="btn-area" class="form-group">
+                <button id="btn-close" class="ui-btn btn-default">Завершить</button>
+                <button id="btn-to-up" class="ui-btn  btn-default ui-btn-icon-angle-up"
                         onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"></button>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div id="pagination" class="right-buttons">
-                <button id="prevBtn" class="ui-btn ui-btn-icon-back"></button>
-                <button id="nextBtn" class="ui-btn ui-btn-icon-forward"></button>
             </div>
         </div>
     </div>

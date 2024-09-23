@@ -19,6 +19,16 @@ function openPopup(url, title) {
     });
 }
 
+function closePopup() {
+    var closePopup = document.getElementById('btn-close');
+
+    if (closePopup) {
+        BX.bind(closePopup, 'click', function () {
+            BX.SidePanel.Instance.close();
+        });
+    }
+}
+
 function addCustomLinkToLeftMenu() {
     // Создание элемента меню
     var menuItem = BX.create(
@@ -49,7 +59,12 @@ function addCustomLinkToLeftMenu() {
     }
 }
 
+function addBtnClosePopup() {
+    closePopup();
+}
+
 // Вызов функции для добавления ссылки в левое меню
 document.addEventListener('DOMContentLoaded', function () {
     addCustomLinkToLeftMenu();
+    addBtnClosePopup();
 });

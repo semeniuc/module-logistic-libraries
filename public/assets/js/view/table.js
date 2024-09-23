@@ -1,4 +1,3 @@
-import {updatePagination} from "./pagination.js";
 import {errorsData, recordsPerPage} from "../action/importFile.js";
 
 export function displayRecords(page) {
@@ -25,7 +24,4 @@ export function displayRecords(page) {
             }, 100);
         });
     });
-
-    // Обновить кнопки пагинации
-    updatePagination();
 }

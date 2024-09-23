@@ -12,9 +12,9 @@ Extension::load([
     'ui.buttons',
     'ui.buttons.icons',
     'ui.forms',
-//    'ui.hint',
     'ui.alerts',
-    'ui.counter'
+    'ui.counter',
+    'sidepanel',
 ]);
 
 $view->component('header', $data);
@@ -32,7 +32,7 @@ $view->component('header', $data);
 
     <div id="multiStepForm">
         <!-- Шаг 1: Выбор категории и действия -->
-        <div class="step active">
+        <div class="step">
             <?php $view->component('title-section', ['name' => 'Выбор справочника']); ?>
             <?php $view->component('step-first'); ?>
         </div>
@@ -44,7 +44,7 @@ $view->component('header', $data);
         </div>
 
         <!-- Шаг 3: Результат импорта -->
-        <div class="step">
+        <div class="step active">
             <?php $view->component('title-section', ['name' => 'Результат импорта']); ?>
             <?php $view->component('step-third'); ?>
         </div>

@@ -47,3 +47,20 @@
     border: none;
     color: #515B67;
 }
+
+
+/* Step 3 */
+#btn-area {
+    display: flex;
+    justify-content: space-between; /* Распределение кнопок */
+    align-items: center; /* Выравнивание по вертикали */
+    width: 100%;
+}
+
+#btn-close {
+    margin: 0 auto; /* Центрирование кнопки "Завершить" */
+}
+
+#btn-to-up {
+    margin-right: 0; /* Прижатие кнопки "Вверх" к правому краю */
+}
