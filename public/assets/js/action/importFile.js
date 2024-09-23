@@ -36,9 +36,12 @@ export function importData() {
 
             if (!data.errors.total) {
                 document.getElementById('errorTable').style.display = 'none';
-                document.getElementById('pagination').style.display = 'none';
-                document.getElementById('btnToUp').style.display = 'none';
-                // document.querySelector('.left-buttons').classList.add('button-to-bottom');
+                document.getElementById('btn-to-up').style.display = 'none';
+
+                const btnArea = document.getElementById('btn-area');
+                btnArea.style.border = 'none';
+                btnArea.style.position = 'relative';
+                btnArea.style.top = '205px';
             }
 
             // Сменить шаг
@@ -55,8 +58,4 @@ export function importData() {
             showLoading(false);
             toggleElements(false);
         });
-}
-
-export function setCurrentPage(page) {
-    currentPage = page;
 }
