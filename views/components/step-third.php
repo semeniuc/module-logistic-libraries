@@ -37,7 +37,7 @@
         <div class="col-md-6">
             <div class="left-buttons">
                 <button class="ui-btn" onclick="step(1)">Вернуться</button>
-                <button class="ui-btn ui-btn-icon-angle-up"
+                <button id="btnToUp" class="ui-btn ui-btn-icon-angle-up"
                         onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"></button>
             </div>
         </div>
