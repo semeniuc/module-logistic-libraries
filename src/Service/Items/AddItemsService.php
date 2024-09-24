@@ -31,6 +31,7 @@ class AddItemsService extends ItemsService
                 $result[$entityType] = $this->entityRepository->createItems($entityTypeIds[$entityType], $items);
             }
         }
+        
         return $result ?? [];
     }
 
@@ -84,8 +85,8 @@ class AddItemsService extends ItemsService
         });
 
         if (!empty($rowsByCoc)) {
-            foreach ($rowsByCoc as $rowData) {
-                $result[] = [
+            foreach ($rowsByCoc as $rowNum => $rowData) {
+                $result['coc_row_' . $rowNum] = [
                     $coordinates['type']['id'][APP_ENV] => 'COC',
                     $coordinates['destination']['id'][APP_ENV] => $rowData[0],
                     $coordinates['contractor']['id'][APP_ENV] => $rowData[1],
@@ -100,8 +101,8 @@ class AddItemsService extends ItemsService
         }
 
         if (!empty($rowsBySoc)) {
-            foreach ($rowsBySoc as $rowData) {
-                $result[] = [
+            foreach ($rowsBySoc as $rowNum => $rowData) {
+                $result['soc_row_' . $rowNum] = [
                     $coordinates['type']['id'][APP_ENV] => 'SOC',
                     $coordinates['pol']['id'][APP_ENV] => $rowData[0],
                     $coordinates['destinationPart2']['id'][APP_ENV] => $rowData[1],

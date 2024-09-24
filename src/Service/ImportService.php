@@ -74,13 +74,19 @@ class ImportService
             $firstRow = (include APP_PATH . '/config/' . $categoryName . '/' . $entityType . '.php')['rows']['first'];
 
             foreach ($items as $key => $item) {
+
+                if (is_string($key) && str_contains($key, '_')) {
+                    preg_match('/\d+$/', $key, $matches);
+                    $key = $matches[0];
+                }
+
                 if ($item->isSuccess()) {
                     $result['success']['total'] += 1;
                 } else {
                     $result['errors']['total'] += 1;
                     $result['errors']['records'][] = [
                         'sheet' => $sheets[$entityType],
-                        'row' => $firstRow + $key + 1,
+                        'row' => (int)$firstRow + (int)$key + 1,
                         'description' => $item->getErrorMessages(),
                     ];
                 }
