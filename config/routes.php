@@ -2,7 +2,6 @@
 
 use App\Controller\HomeController;
 use App\Controller\LibraryDataController;
-use App\Controller\TestController;
 use App\Kernel\Router\Route;
 
 return [
