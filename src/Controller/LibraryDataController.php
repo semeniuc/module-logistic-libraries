@@ -30,7 +30,7 @@ class LibraryDataController extends Controller
         require_once $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php';
 
         $categoryName = $this->request()->post['directoryType'] ?? 'tariff-library';
-        $pathToFile = $this->request()->files['excelFile']['tmp_name'] ?? APP_PATH . '/var/tmp/empty-rows.xlsx';
+        $pathToFile = $this->request()->files['excelFile']['tmp_name'] ?? APP_PATH . '/var/tmp/sample_29.09.xlsx';
         $this->importService->execute($categoryName, $pathToFile);
     }
 }

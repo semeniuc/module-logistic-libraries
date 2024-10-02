@@ -57,6 +57,7 @@ class ReadSpreadsheetService
             if (!empty($rows)) {
                 $rows = array_filter($rows, [$this, 'isNotEmptyRow']);
                 $rows = array_map([$this, 'trimRowLength'], $rows);
+                $rows = array_map([$this, 'trimSpaces'], $rows);
             }
         }
 
@@ -71,5 +72,21 @@ class ReadSpreadsheetService
     private function trimRowLength(array $row): array
     {
         return array_slice($row, 0, 49);
+    }
+
+    private function trimSpaces(array $row): array
+    {
+        foreach ($row as &$value) {
+            if (!empty($value)) {
+                // Добавляем пробел перед скобкой, если его нет
+                $value = preg_replace('/(?<!\s)\(/', ' (', $value);
+                // Заменяем несколько пробелов одним
+                $value = preg_replace('/\s+/', ' ', $value);
+                // Удаляем начальные и конечные пробелы
+                $value = trim($value);
+            }
+        }
+
+        return $row;
     }
 }
