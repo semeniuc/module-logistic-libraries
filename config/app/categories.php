@@ -4,19 +4,19 @@ return [
     'tariff-library' => [
         'sea' => [
             'dev' => 163,
-            'prod' => null,
+            'prod' => 1032,
         ],
         'railway' => [
             'dev' => 162,
-            'prod' => null,
+            'prod' => 1036,
         ],
         'auto' => [
             'dev' => 177,
-            'prod' => null,
+            'prod' => 1040,
         ],
         'container' => [
             'dev' => 159,
-            'prod' => null,
+            'prod' => 1044,
         ],
     ],
 ];
