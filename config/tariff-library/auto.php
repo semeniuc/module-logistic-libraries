@@ -5,16 +5,16 @@ return [
         'first' => 3,
     ],
     'columns' => [
-        'pod' => [
+        'station' => [
             'id' => [
-                'dev' => 'UF_CRM_6_POD',
+                'dev' => 'UF_CRM_6_STATION',
                 'prod' => null,
             ],
             'column' => 'A'
         ],
-        'destination' => [
+        'point' => [
             'id' => [
-                'dev' => 'UF_CRM_6_DESTINATION',
+                'dev' => 'UF_CRM_6_POINT',
                 'prod' => null,
             ],
             'column' => 'B'
@@ -55,12 +55,47 @@ return [
             ],
             'column' => 'G'
         ],
-        'comment' => [
+        'terminal20Dry' => [
             'id' => [
-                'dev' => 'UF_CRM_6_COMMENT',
+                'dev' => 'UF_CRM_6_TERMINAL_20DRY',
                 'prod' => null,
             ],
             'column' => 'H'
+        ],
+        'terminal40Hc' => [
+            'id' => [
+                'dev' => 'UF_CRM_6_TERMINAL_40HC',
+                'prod' => null,
+            ],
+            'column' => 'I'
+        ],
+        'terminalValidFrom' => [
+            'id' => [
+                'dev' => 'UF_CRM_6_TERMINAL_VALID_FROM',
+                'prod' => null,
+            ],
+            'column' => 'J'
+        ],
+        'terminalValidTill' => [
+            'id' => [
+                'dev' => 'UF_CRM_6_TERMINAL_VALID_TILL',
+                'prod' => null,
+            ],
+            'column' => 'K'
+        ],
+        'deliveryComment' => [
+            'id' => [
+                'dev' => 'UF_CRM_6_DELIVERY_COMMENT',
+                'prod' => null,
+            ],
+            'column' => 'L'
+        ],
+        'terminalComment' => [
+            'id' => [
+                'dev' => 'UF_CRM_6_TERMINAL_COMMENT',
+                'prod' => null,
+            ],
+            'column' => 'M'
         ],
     ],
 ];
