@@ -51,11 +51,13 @@ class logistic_libraries extends CModule
     {
         $eventManager = EventManager::getInstance();
         $eventManager->registerEventHandler('main', 'onProlog', $this->MODULE_ID, '\App\Listener\MenuTabListener', 'handler');
+        $eventManager->registerEventHandler('main', 'OnBuildGlobalMenu', $this->MODULE_ID, '\App\Listener\MenuAdminTabListener', 'handler');
     }
 
     public function UnInstallEvents(): void
     {
         $eventManager = EventManager::getInstance();
         $eventManager->unRegisterEventHandler('main', 'onProlog', $this->MODULE_ID, '\App\Listener\MenuTabListener', 'handler');
+        $eventManager->unRegisterEventHandler('main', 'OnBuildGlobalMenu', $this->MODULE_ID, '\App\Listener\MenuAdminTabListener', 'handler');
     }
 }
