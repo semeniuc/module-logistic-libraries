@@ -16,8 +16,9 @@ class Router
 
     public function __construct(
         public readonly Request $request,
-        public readonly View $view,
-    ) {
+        public readonly View    $view,
+    )
+    {
         $this->initRoutes();
     }
 
@@ -44,6 +45,8 @@ class Router
 
     private function findRoute(string $uri, string $method): ?Route
     {
+        $uri = rtrim($uri, '/');
+        
         if (array_key_exists($uri, $this->routes[$method])) {
             return $this->routes[$method][$uri];
         }
