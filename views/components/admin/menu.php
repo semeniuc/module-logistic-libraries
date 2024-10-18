@@ -8,9 +8,6 @@ $aTabs = [
 
 $tabControl = new CAdminTabControl("tabControl", $aTabs);
 
-$tabControl->Begin();
-$tabControl->BeginNextTab();
-
 $aAccess = [
     'd' => '[D] Запретить',
     'r' => '[R] Чтение',
@@ -28,75 +25,86 @@ if ($rsUsers) {
 
 ?>
 
-    <form method="POST" Action="<?= $APPLICATION->GetCurPage() ?>" ENCTYPE="multipart/form-data" name="post_form">
-        <table class="adm-detail-content-table edit-table" id="edit_table" style="opacity: 1;">
-            <tbody>
-            <tr>
-                <td width="40%" class="adm-detail-content-cell-l"><b>По умолчанию:</b></td>
-                <td width="60%" class="adm-detail-content-cell-r">
-                    <select class="typeselect" name="GROUP_DEFAULT_TASK" id="GROUP_DEFAULT_TASK">
-                        <?php foreach ($aAccess as $k => $v): ?>
-                            <option value="<?= $k ?>"><?= $v ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td class="adm-detail-content-cell-l">
-                    <select style="width:300px" onchange="settingsSetGroupID(this)">
-                        <option value="">(выберите пользователя)</option>
-                        <?php foreach ($aUsers as $id => $name): ?>
-                            <option value="<?= $id ?>"><?= $name ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </td>
-                <td class="adm-detail-content-cell-r">
-                    <select class="typeselect" name="" id="">
-                        <option value="">&lt; по умолчанию &gt;</option>
-                        <?php foreach ($aAccess as $k => $v): ?>
-                            <option value="<?= $k ?>"><?= $v ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </td>
-            </tr>
+<form method="POST" Action="<?= $APPLICATION->GetCurPage() ?>" ENCTYPE="multipart/form-data" name="post_form">
+    <?php
+    $tabControl->Begin();
+    $tabControl->BeginNextTab();
+    ?>
+    <tr>
+        <td width="40%" class="adm-detail-content-cell-l"><b>По умолчанию:</b></td>
+        <td width="60%" class="adm-detail-content-cell-r">
+            <select class="typeselect" name="GROUP_DEFAULT_TASK" id="GROUP_DEFAULT_TASK">
+                <?php foreach ($aAccess as $k => $v): ?>
+                    <option value="<?= $k ?>"><?= $v ?></option>
+                <?php endforeach; ?>
+            </select>
+        </td>
+    </tr>
 
-            <tr>
-                <td class="adm-detail-content-cell-l">&nbsp;</td>
-                <td style="padding-bottom:10px;" class="adm-detail-content-cell-r">
-                    <script>
-                        function settingsSetGroupID(el) {
-                            var tr = jsUtils.FindParentObject(el, "tr");
-                            var sel = jsUtils.FindChildObject(tr.cells[1], "select");
-                            sel.name = "TASKS_" + el.value;
-                        }
+    <tr>
+        <td class="adm-detail-content-cell-l">
+            <select style="width:300px" onchange="settingsSetGroupID(this)">
+                <option value="">(выберите пользователя)</option>
+                <?php foreach ($aUsers as $id => $name): ?>
+                    <option value="<?= $id ?>"><?= $name ?></option>
+                <?php endforeach; ?>
+            </select>
+        </td>
+        <td class="adm-detail-content-cell-r">
+            <select class="typeselect" name="" id="">
+                <option value="">&lt; по умолчанию &gt;</option>
+                <?php foreach ($aAccess as $k => $v): ?>
+                    <option value="<?= $k ?>"><?= $v ?></option>
+                <?php endforeach; ?>
+            </select>
+        </td>
+    </tr>
 
-                        function settingsAddRights(a) {
-                            var row = jsUtils.FindParentObject(a, "tr");
-                            var tbl = row.parentNode;
+    <tr>
+        <td class="adm-detail-content-cell-l">&nbsp;</td>
+        <td style="padding-bottom:10px;" class="adm-detail-content-cell-r">
+            <script>
+                function settingsSetGroupID(el) {
+                    var tr = jsUtils.FindParentObject(el, "tr");
+                    var sel = jsUtils.FindChildObject(tr.cells[1], "select");
+                    sel.name = "TASKS_" + el.value;
+                }
 
-                            var tableRow = tbl.rows[row.rowIndex - 1].cloneNode(true);
-                            tbl.insertBefore(tableRow, row);
+                function settingsAddRights(a) {
+                    var row = jsUtils.FindParentObject(a, "tr");
+                    var tbl = row.parentNode;
 
-                            var sel = jsUtils.FindChildObject(tableRow.cells[1], "select");
-                            sel.name = "";
-                            sel.selectedIndex = 0;
+                    var tableRow = tbl.rows[row.rowIndex - 1].cloneNode(true);
+                    tbl.insertBefore(tableRow, row);
 
-                            sel = jsUtils.FindChildObject(tableRow.cells[0], "select");
-                            sel.selectedIndex = 0;
-                        }
-                    </script>
-                    <a href="javascript:void(0)" onclick="settingsAddRights(this)" hidefocus="true" class="adm-btn">Добавить
-                        право доступа</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </form>
+                    var sel = jsUtils.FindChildObject(tableRow.cells[1], "select");
+                    sel.name = "";
+                    sel.selectedIndex = 0;
 
-<?php
+                    sel = jsUtils.FindChildObject(tableRow.cells[0], "select");
+                    sel.selectedIndex = 0;
+                }
+            </script>
+            <a href="javascript:void(0)" onclick="settingsAddRights(this)" hidefocus="true" class="adm-btn">
+                Добавить право доступа
+            </a>
+        </td>
+    </tr>
 
-$tabControl->Buttons();
 
-$tabControl->End();
+    <?php $tabControl->Buttons(); ?>
 
-?>
+    <div class="adm-detail-content-btns-wrap" id="tabControl_buttons_div" style="left: 0px;">
+        <div class="adm-detail-content-btns">
+            <input type="submit" name="Update" value="Сохранить" title="Сохранить изменения и вернуться"
+                   class="adm-btn-save">
+            <input type="submit" name="Apply" value="Применить" title="Сохранить изменения и остаться в форме">
+            <input type="submit" name="RestoreDefaults" title="Установить значения по умолчанию"
+                   onclick="return confirm('Внимание! Все настройки будут перезаписаны значениями по умолчанию. Продолжить?')"
+                   value="По умолчанию">
+        </div>
+    </div>
+
+    <?php $tabControl->End(); ?>
+</form>
+
