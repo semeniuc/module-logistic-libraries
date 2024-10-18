@@ -18,6 +18,6 @@ class AdminController extends Controller
 
     public function settings(): void
     {
-
+        dd($this->request()->post);
     }
 }
