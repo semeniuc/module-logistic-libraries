@@ -1,29 +1,32 @@
 <?php
 
 use App\Kernel\View\View;
-use Bitrix\Main\UI\Extension;
+use Bitrix\Main\Loader;
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_admin_before.php';
 
 /**
  * @var View $view
  * @var $data = []
  * */
 
-//Extension::load([
-//    'ui.buttons',
-//    'ui.buttons.icons',
-//    'ui.forms',
-//    'ui.alerts',
-//    'ui.counter',
-//    'sidepanel',
-//]);
+global $USER;
+global $APPLICATION;
 
-$view->component('header', $data);
+// Проверка
+$module_id = $data['module_id'];
 
-?>
+if (!Loader::includeModule($module_id)) {
+    echo 'Ошибка подключения модуля.';
+}
 
-    <p>Adminpanel</p>
+if (!$USER->IsAdmin()) {
+    echo 'Недостаточно прав для отображения админ меню.';
+}
 
-<?php
+require_once $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_admin_after.php";
 
-$view->component('footer');
+// Интерфейс
+$view->component('admin/menu');
 
+require $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/epilog_admin.php";

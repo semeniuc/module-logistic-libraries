@@ -11,7 +11,13 @@ class AdminController extends Controller
     public function index(): void
     {
         $this->view('admin', [
-            'title' => 'Управление: Импорт справочников',
+            'title' => 'Настройки - Импорт справочников',
+            'module_id' => 'logistic.libraries',
         ]);
+    }
+
+    public function settings(): void
+    {
+
     }
 }
