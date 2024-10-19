@@ -82,12 +82,19 @@ return [
             ],
             'column' => 'K'
         ],
+        'conversion' => [
+            'id' => [
+                'dev' => 'UF_CRM_4_CONVERSION',
+                'prod' => 'UF_CRM_4_CONVERSION',
+            ],
+            'column' => 'L'
+        ],
         'comment' => [
             'id' => [
                 'dev' => 'UF_CRM_4_COMMENT',
                 'prod' => 'UF_CRM_4_COMMENT',
             ],
-            'column' => 'L'
+            'column' => 'M'
         ],
     ],
 ];
