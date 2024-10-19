@@ -45,13 +45,11 @@ class Router
 
     private function findRoute(string $uri, string $method): ?Route
     {
-        $uri = rtrim($uri, '/');
-        
-        if (array_key_exists($uri, $this->routes[$method])) {
-            return $this->routes[$method][$uri];
+        if (!array_key_exists($uri, $this->routes[$method])) {
+            $uri = rtrim($uri, '/');
         }
 
-        return null;
+        return $this->routes[$method][$uri] ?? null;
     }
 
     private function notFound(): void
