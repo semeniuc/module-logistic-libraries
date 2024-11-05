@@ -28,15 +28,19 @@ class AdminService
 
     public function save(array $data): void
     {
-        $tmp = [];
-        foreach ($data as $key => $value) {
-            if ($key == 'default_for_all') {
-                $tmp['all'] = $value;
-            } elseif (str_contains($key, 'user_')) {
-                $tmp[$key] = $value;
+        if ($data['button'] === 'По умолчанию') {
+            $this->accessRepository->delete();
+        } else {
+            $tmp = [];
+            foreach ($data as $key => $value) {
+                if ($key == 'default_for_all') {
+                    $tmp['all'] = $value;
+                } elseif (str_contains($key, 'user_')) {
+                    $tmp[$key] = $value;
+                }
             }
+
+            $this->accessRepository->save($tmp);
         }
-        
-        $this->accessRepository->save($tmp);
     }
 }

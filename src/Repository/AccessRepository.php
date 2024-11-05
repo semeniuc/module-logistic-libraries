@@ -5,8 +5,8 @@ namespace App\Repository;
 class AccessRepository
 {
     public function __construct(
-        public readonly string $pathToFile = APP_PATH . '/var/options/access.json',
-        public readonly string $pathToDefault = APP_PATH . '/config/app/access.php',
+        public readonly string $pathToFile = '/home/bitrix/www/local/modules/logistic.libraries' . '/var/options/access.json',
+        public readonly string $pathToDefault = '/home/bitrix/www/local/modules/logistic.libraries' . '/config/app/access.php',
     )
     {
     }
