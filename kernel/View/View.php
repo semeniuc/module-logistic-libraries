@@ -20,7 +20,6 @@ class View
         }
 
         extract(['view' => $this]);
-        extract($data);
         include_once $path;
     }
 
@@ -34,6 +33,6 @@ class View
         }
 
         extract($data);
-        include $path;
+        include_once $path;
     }
 }

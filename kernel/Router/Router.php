@@ -5,20 +5,21 @@ declare(strict_types=1);
 namespace App\Kernel\Router;
 
 use App\Kernel\Http\Request;
+use App\Kernel\Http\Response;
 use App\Kernel\View\View;
 
 class Router
 {
     private array $routes = [
         'GET' => [],
-        'POST' => []
+        'POST' => [],
     ];
 
     public function __construct(
         public readonly Request $request,
-        public readonly View    $view,
-    )
-    {
+        public readonly Response $response,
+        public readonly View $view
+    ) {
         $this->initRoutes();
     }
 
@@ -35,6 +36,7 @@ class Router
             $controller = new $controller();
 
             call_user_func([$controller, 'setRequest'], $this->request);
+            call_user_func([$controller, 'setResponse'], $this->response);
             call_user_func([$controller, 'setView'], $this->view);
 
             call_user_func([$controller, $action]);
@@ -45,11 +47,11 @@ class Router
 
     private function findRoute(string $uri, string $method): ?Route
     {
-        if (!array_key_exists($uri, $this->routes[$method])) {
-            $uri = rtrim($uri, '/');
+        if (array_key_exists($uri, $this->routes[$method])) {
+            return $this->routes[$method][$uri];
         }
 
-        return $this->routes[$method][$uri] ?? null;
+        return null;
     }
 
     private function notFound(): void
