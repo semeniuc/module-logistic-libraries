@@ -2,6 +2,10 @@
 
 global $APPLICATION;
 
+/**
+ * @var array $data
+ */
+
 // Определение вкладок для панели администратора
 $aTabs = [
     ["DIV" => "access", "TAB" => "Доступ", "ICON" => "main_user_edit", "TITLE" => "Уровень доступа к модулю"],
@@ -26,6 +30,11 @@ if ($rsUsers) {
         $aUsers[$rsUser['ID']] = $rsUser['NAME'] . ' ' . $rsUser['LAST_NAME'];
     }
 }
+
+//dd([
+//    'data' => $data,
+//    'users' => $aUsers,
+//]);
 ?>
 
 <form method="POST" action="<?= $APPLICATION->GetCurPage() ?>" enctype="multipart/form-data" name="post_form">
@@ -40,12 +49,61 @@ if ($rsUsers) {
         <td width="40%" class="adm-detail-content-cell-l"><b>По умолчанию:</b></td>
         <td width="60%" class="adm-detail-content-cell-r">
             <select name="default_for_all" id="default_for_all">
-                <?php foreach ($aAccess as $k => $v): ?>
-                    <option value="<?= $k ?>"><?= $v ?></option>
-                <?php endforeach; ?>
+                <?php
+                foreach ($aAccess as $k => $v) {
+                    if ($data['all'] == $k) {
+                        echo "<option value=\"$k\" selected>$v</option>";
+                        unset($data['all']);
+                    } else {
+                        echo "<option value=\"$k\">$v</option>";
+                    }
+                }
+                ?>
             </select>
         </td>
     </tr>
+
+    <!-- Добавить текущие настройки -->
+    <?php
+    foreach ($data as $user => $access) {
+        echo "<tr>";
+        // Добавление пользователя
+        echo "<td class=\"adm-detail-content-cell-l\">";
+        echo "<select style=\"width:300px\">";
+        foreach ($aUsers as $id => $name) {
+            if ($user == 'user_' . $id) {
+                echo "<option value=\"$id\" selected>$name</option>";
+            } else {
+                echo "<option value=\"$id\">$name</option>";
+            }
+        }
+        echo "</select>";
+        echo "</td>";
+
+        // Добавление прав
+        echo "<td class=\"adm-detail-content-cell-r\">";
+        echo "<select name=\"$user\">";
+        foreach ($aAccess as $k => $strName) {
+            if ($access == $k) {
+                echo "<option value=\"$k\" selected>$strName</option>";
+            } else {
+                echo "<option value=\"$k\">$strName</option>";
+            }
+        }
+        echo "</select>";
+        echo "</td>";
+
+        // Кнопка "Удалить"
+        echo "
+         <td>
+            <a href=\"javascript:void(0)\" onclick=\"removeRow(this)\" class=\"adm-btn adm-btn-remove\">
+                <span class=\"adm-btn-icon\">удалить</span>
+            </a>
+        </td>";
+        echo "</tr>";
+    }
+
+    ?>
 
     <!-- Выбор пользователя и уровня доступа -->
     <tr>
@@ -92,11 +150,7 @@ if ($rsUsers) {
                     var tableRow = tbl.rows[row.rowIndex - 1].cloneNode(true);
                     tbl.insertBefore(tableRow, row);
 
-                    var sel = jsUtils.FindChildObject(tableRow.cells[1], "select");
-                    sel.name = "TASKS_" + Math.random().toString(36).substring(7); // Генерация уникального имени
-                    sel.selectedIndex = 0;
-
-                    sel = jsUtils.FindChildObject(tableRow.cells[0], "select");
+                    var sel = jsUtils.FindChildObject(tableRow.cells[0], "select");
                     sel.selectedIndex = 0;
                 }
 

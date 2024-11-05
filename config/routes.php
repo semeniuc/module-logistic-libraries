@@ -9,9 +9,9 @@ return [
     Route::get(APP_URL, [HomeController::class, 'index']),
     Route::post(APP_URL . 'export', [LibraryDataController::class, 'export']),
     Route::post(APP_URL . 'import', [LibraryDataController::class, 'import']),
-    
-    Route::get(APP_URL . 'admin', [AdminController::class, 'index']),
-    Route::post(APP_URL . 'admin', [AdminController::class, 'settings']),
+
+    Route::get(APP_URL . 'admin', [AdminController::class, 'read']),
+    Route::post(APP_URL . 'admin', [AdminController::class, 'save']),
 
     # Test
 //    Route::get(APP_URL . 'export', [LibraryDataController::class, 'export']),

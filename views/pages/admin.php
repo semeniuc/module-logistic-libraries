@@ -27,6 +27,6 @@ if (!$USER->IsAdmin()) {
 require_once $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_admin_after.php";
 
 // Интерфейс
-$view->component('admin/menu');
+$view->component('admin/menu', $data['access']);
 
 require $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/epilog_admin.php";
