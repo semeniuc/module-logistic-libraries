@@ -1,0 +1,71 @@
+/* Счетчики */
+#importNotification {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+#importNotification > div {
+    display: flex;
+    align-items: center; /* Выравнивание по вертикали */
+    margin-right: 20px;
+}
+
+.ui-counter {
+    margin-left: 6px; /* Отступ между текстом и счётчиком */
+}
+
+/* Таблицы */
+table {
+    background-color: #F9FAFB2E;
+    border-radius: 15px;
+    font-size: 13px;
+    border-collapse: collapse;
+    margin-bottom: 0 !important;
+}
+
+table th, table td {
+    min-width: 50px;
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+table th {
+    background-color: #DBDFFB;
+    border-color: #f3f3f3 !important;
+    color: #333;
+    font-weight: normal;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+table th:last-child {
+    min-width: 260px;
+}
+
+table tbody td:first-child {
+    text-align: left;
+}
+
+table tbody td:last-child {
+    min-width: 300px;
+    text-align: left;
+}
+
+table tbody tr:hover {
+    background-color: rgba(225, 225, 225, 0.5);
+}
+
+/* Начальные стили для анимации */
+table tbody tr {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Стили для появления строки */
+table tbody tr.show {
+    height: 30px;
+    opacity: 1;
+    transform: translateY(0);
+}
+

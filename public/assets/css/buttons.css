@@ -1,0 +1,69 @@
+:root {
+    --btn-def: #D3D7DC;
+    --btn-def-hover: #DFE3E8;
+    --btn-green: #BCEB3B;
+    --btn-green-hover: #D2F66A;
+}
+
+.button-to-bottom {
+    position: absolute;
+    bottom: 15px; /* Расстояние от низа */
+    left: 30px;
+    right: 0;
+    display: flex;
+    gap: 8px; /* Расстояние между кнопками */
+}
+
+.btn-default {
+    background-color: var(--btn-def);
+    border: none;
+    color: #515B67;
+}
+
+.btn-default:hover {
+    background-color: var(--btn-def-hover);
+    color: #515B67;
+}
+
+.btn-next {
+    background-color: var(--btn-green);
+    border: none;
+    color: #515B67;
+}
+
+.btn-next:hover {
+    background-color: var(--btn-green-hover);
+    color: #515B67;
+}
+
+.btn-next:disabled {
+    background-color: var(--btn-green);
+    border: none;
+    color: #515B67;
+}
+
+.btn-next:disabled:hover {
+    background-color: var(--btn-green);
+    border: none;
+    color: #515B67;
+}
+
+/* Step 3 */
+#btn-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+    padding: 20px 0;
+    border-top: 1px solid #ccc;
+}
+
+#btn-close {
+    margin: 0 auto; /* Центрирование кнопки "Завершить" */
+}
+
+#btn-to-up {
+    margin-right: 0; /* Прижатие кнопки "Вверх" к правому краю */
+}
