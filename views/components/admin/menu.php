@@ -27,7 +27,9 @@ $aUsers = [];
 $rsUsers = CUser::GetList("id", "asc", ["ACTIVE" => "Y"], ["SELECT" => ["ID", "NAME", "LAST_NAME"]]);
 if ($rsUsers) {
     while ($rsUser = $rsUsers->Fetch()) {
-        $aUsers[$rsUser['ID']] = $rsUser['NAME'] . ' ' . $rsUser['LAST_NAME'];
+        if (!empty($rsUser['NAME'])) {
+            $aUsers[$rsUser['ID']] = $rsUser['NAME'] . ' ' . $rsUser['LAST_NAME'];
+        }
     }
 }
 
