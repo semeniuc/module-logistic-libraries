@@ -1,13 +1,14 @@
 <?php
 
 return [
-    'tariff-library' => [
-        'template' => 'tariff-library-template.xlsx',
+    'sea' => [
+        'template' => 'sea-template.xlsx',
         'sheets' => [
-            'sea' => 'Море',
-            'railway' => 'ЖД',
-            'container' => 'Аренда контейнеров',
-            'auto' => 'Автодоставка',
+            'sea' => 'Фрахт',
+            'sea-with-service' => 'Фрахт сквозным сервисом',
+            'sea-with-drop' => 'Фрахт с дропом',
+            'container-drop' => 'Дроп контейнеров',
+            'container-rent' => 'Аренда контейнеров',
         ],
     ],
 ];

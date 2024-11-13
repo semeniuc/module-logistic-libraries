@@ -29,8 +29,26 @@ class LibraryDataController extends Controller
     {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php';
 
-        $categoryName = $this->request()->post['directoryType'] ?? 'tariff-library';
-        $pathToFile = $this->request()->files['excelFile']['tmp_name'] ?? APP_PATH . '/var/tmp/sample_29.09.xlsx';
+        $categoryName = $this->request()->post['directoryType'];
+        $pathToFile = $this->request()->files['excelFile']['tmp_name'];
+
+        $this->importService->execute($categoryName, $pathToFile);
+    }
+
+    public function importTest(): void
+    {
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php';
+
+        $files = [
+            'sea' => APP_PATH . '/var/tmp/[ФРАХТ] Юля Макарова.xlsx',
+            'train' => APP_PATH . '/var/tmp/[ЖД] Сергей Шабанов.xlsx',
+            'train-service' => APP_PATH . '/var/tmp/[ЖД-Сервис] Юля Макарова.xlsx',
+            'auto' => APP_PATH . '/var/tmp/[АВТО] Сергей Шабанов.xlsx',
+        ];
+
+        $categoryName = 'sea';
+        $pathToFile = $files[$categoryName];
+
         $this->importService->execute($categoryName, $pathToFile);
     }
 }

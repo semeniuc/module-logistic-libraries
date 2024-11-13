@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * todo: delete config
+ * @deprecated
+ */
 return [
     'tariff-library' => [
         'sea' => [

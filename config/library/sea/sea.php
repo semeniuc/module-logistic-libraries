@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'entityType' => [
+        'dev' => 163,
+        'prod' => 1032,
+    ],
     'rows' => [
         'first' => 3,
     ],
@@ -19,10 +23,10 @@ return [
             ],
             'column' => 'B'
         ],
-        'destination' => [
+        'terminal' => [
             'id' => [
-                'dev' => 'UF_CRM_4_DESTINATION',
-                'prod' => 'UF_CRM_4_DESTINATION',
+                'dev' => 'UF_CRM_4_TERMINAL',
+                'prod' => null,
             ],
             'column' => 'C'
         ],

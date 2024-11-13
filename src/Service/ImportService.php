@@ -25,13 +25,15 @@ class ImportService
     {
         # Read
         $dataFromExcel = $this->read($categoryName, $pathToFile);
-        
+
         # Delete
         if (!empty($dataFromExcel)) {
             $this->delete($categoryName, $dataFromExcel);
 
             # Add
             $resultAddItems = $this->add($categoryName, $dataFromExcel);
+
+            dd($resultAddItems);
             $this->output($categoryName, $resultAddItems);
         }
     }
@@ -43,12 +45,12 @@ class ImportService
 
     private function delete(string $categoryName, array $dataFromExcel): void
     {
-        $types = [];
-        foreach ($dataFromExcel as $entityType => $items) {
-            (empty($items)) ?: $types[] = $entityType;
+        $sheetNames = [];
+        foreach ($dataFromExcel as $sheetName => $rows) {
+            (empty($rows)) ?: $sheetNames[] = $sheetName;
         }
 
-        $this->deleteItemsService->execute($categoryName, $types);
+        $this->deleteItemsService->execute($categoryName, $sheetNames);
     }
 
     private function add(string $categoryName, array $dataFromExcel): array
@@ -92,7 +94,6 @@ class ImportService
                 }
             }
         }
-
 
         header('Content-Type: application/json');
         echo json_encode($result);

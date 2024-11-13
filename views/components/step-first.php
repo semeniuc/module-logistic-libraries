@@ -6,7 +6,11 @@
     <div class="ui-ctl ui-ctl-after-icon ui-ctl-dropdown" style="display: inline-block;">
         <div class="ui-ctl-after ui-ctl-icon-angle"></div>
         <select class="ui-ctl-element" id="directoryType" name="directoryType">
-            <option value="tariff-library">Справочники тарификатора</option>
+            <option value="">Выберите тип справочника</option>
+            <option value="sea">Фрахт</option>
+            <option value="train">ЖД</option>
+            <option value="train-service">ЖД-Сервис</option>
+            <option value="auto">Авто</option>
         </select>
     </div>
     <span data-hint="Выберите категорию справочников которые Вы планируете экспортировать или импортировать."></span>

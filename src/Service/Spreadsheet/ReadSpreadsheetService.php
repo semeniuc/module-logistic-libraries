@@ -25,7 +25,6 @@ class ReadSpreadsheetService
         return IOFactory::load($pathToFile);
     }
 
-
     private function getSheetsByCategoryName(array $sheets, string $categoryName): array
     {
         $listSheets = (include APP_PATH . '/config/app/templates.php')[$categoryName]['sheets'];
@@ -49,7 +48,7 @@ class ReadSpreadsheetService
 
     private function getRowsBySheetId(string $categoryName, string $sheetId, Worksheet $sheet): array
     {
-        $firstRow = (include APP_PATH . '/config/' . $categoryName . '/' . $sheetId . '.php')['rows']['first'];
+        $firstRow = (include APP_PATH . "/config/library/{$categoryName}/{$sheetId}.php")['rows']['first'];
 
         if ($firstRow < $sheet->getHighestRow()) {
             $rows = array_slice($sheet->toArray(), $firstRow);

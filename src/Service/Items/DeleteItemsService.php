@@ -11,21 +11,17 @@ class DeleteItemsService extends ItemsService
         parent::__construct();
     }
 
-    public function execute(string $categoryName, array $entityTypes): void
+    public function execute(string $categoryName, array $sheetNames): void
     {
-        $this->deleteItems($categoryName, $entityTypes);
+        $this->deleteItems($categoryName, $sheetNames);
     }
 
-    private function deleteItems(string $categoryName, array $entityTypes): void
+    private function deleteItems(string $categoryName, array $sheetNames): void
     {
-        if (!empty($entityTypes)) {
-            $entityTypeIds = $this->getEntityTypeIds($categoryName);
-            
-            if (!empty($entityTypeIds)) {
-                foreach ($entityTypeIds as $entityType => $entityTypeId) {
-                    if (in_array($entityType, $entityTypes)) {
-                        $this->entityRepository->deleteItems($entityTypeId);
-                    }
+        if (!empty($sheetNames)) {
+            foreach ($sheetNames as $sheetName) {
+                if ($entityTypeId = $this->getEntityTypeId($categoryName, $sheetName)) {
+                    $this->entityRepository->deleteItems($entityTypeId);
                 }
             }
         }
