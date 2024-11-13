@@ -17,8 +17,8 @@ $tabControl = new CAdminTabControl("tabControl", $aTabs);
 // Определение уровней доступа
 $aAccess = [
     'd' => '[D] Запретить',
-    'r' => '[R] Чтение',
-    'u' => '[U] Изменение',
+//    'r' => '[R] Чтение',
+//    'u' => '[U] Изменение',
     'w' => '[W] Полный доступ',
 ];
 
@@ -31,10 +31,6 @@ if ($rsUsers) {
     }
 }
 
-//dd([
-//    'data' => $data,
-//    'users' => $aUsers,
-//]);
 ?>
 
 <form method="POST" action="<?= $APPLICATION->GetCurPage() ?>" enctype="multipart/form-data" name="post_form">

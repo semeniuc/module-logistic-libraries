@@ -18,15 +18,6 @@ try {
     $app = new App();
     $app->run();
 } catch (Throwable $th) {
-//    LoggingService::save([
-//        'code' => $th->getCode(),
-//        'message' => $th->getMessage(),
-//        'file' => $th->getFile(),
-//        'line' => $th->getLine(),
-//    ], 'error', 'errors');
-
-//    echo json_encode(['result' => 'error']);
-
     echo json_encode([
         'code' => $th->getCode(),
         'message' => $th->getMessage(),
