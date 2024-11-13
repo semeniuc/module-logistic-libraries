@@ -5,18 +5,20 @@ declare(strict_types=1);
 namespace App\Kernel\Router;
 
 use App\Kernel\Http\Request;
+use App\Kernel\Http\Response;
 use App\Kernel\View\View;
 
 class Router
 {
     private array $routes = [
         'GET' => [],
-        'POST' => []
+        'POST' => [],
     ];
 
     public function __construct(
         public readonly Request $request,
-        public readonly View $view,
+        public readonly Response $response,
+        public readonly View $view
     ) {
         $this->initRoutes();
     }
@@ -34,6 +36,7 @@ class Router
             $controller = new $controller();
 
             call_user_func([$controller, 'setRequest'], $this->request);
+            call_user_func([$controller, 'setResponse'], $this->response);
             call_user_func([$controller, 'setView'], $this->view);
 
             call_user_func([$controller, $action]);

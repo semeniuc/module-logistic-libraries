@@ -20,7 +20,6 @@ class View
         }
 
         extract(['view' => $this]);
-        extract($data);
         include_once $path;
     }
 
