@@ -25,15 +25,13 @@ class ImportService
     {
         # Read
         $dataFromExcel = $this->read($categoryName, $pathToFile);
-        
+
         # Delete
         if (!empty($dataFromExcel)) {
             $this->delete($categoryName, $dataFromExcel);
 
             # Add
             $resultAddItems = $this->add($categoryName, $dataFromExcel);
-
-            dd($resultAddItems);
             $this->output($categoryName, $resultAddItems);
         }
     }

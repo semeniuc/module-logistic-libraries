@@ -32,11 +32,13 @@ class EntityRepository
         return $result;
     }
 
-    public function deleteItems(int $entityTypeId)
+    public function deleteItems(int $entityTypeId, int $managerId)
     {
         if ($items = $this->getObjects($entityTypeId)) {
             foreach ($items as $item) {
-                $item->delete();
+                if ($item->getCreatedBy() === $managerId) {
+                    $item->delete();
+                }
             }
         }
     }

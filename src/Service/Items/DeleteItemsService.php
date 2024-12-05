@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Service\Items;
 
+use Bitrix\Main\Engine\CurrentUser;
+
 class DeleteItemsService extends ItemsService
 {
+    private int $userId = 0;
+
     public function __construct()
     {
         parent::__construct();
+        $this->userId = (int)CurrentUser::get()->getId();
     }
 
     public function execute(string $categoryName, array $sheetNames): void
@@ -21,7 +26,7 @@ class DeleteItemsService extends ItemsService
         if (!empty($sheetNames)) {
             foreach ($sheetNames as $sheetName) {
                 if ($entityTypeId = $this->getEntityTypeId($categoryName, $sheetName)) {
-                    $this->entityRepository->deleteItems($entityTypeId);
+                    $this->entityRepository->deleteItems($entityTypeId, $this->userId);
                 }
             }
         }
