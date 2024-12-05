@@ -24,4 +24,10 @@ return [
             'train-service' => 'ЖД Сквозные сервисы',
         ],
     ],
+    'auto' => [
+        'template' => 'auto-template.xlsx',
+        'sheets' => [
+            'auto' => 'АВТОДОСТАВКА',
+        ],
+    ],
 ];
