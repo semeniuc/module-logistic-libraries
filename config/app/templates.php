@@ -18,4 +18,10 @@ return [
             'train-alternative' => 'ЖД альтернатива',
         ],
     ],
+    'train-service' => [
+        'template' => 'train-service-template.xlsx',
+        'sheets' => [
+            'train-service' => 'ЖД Сквозные сервисы',
+        ],
+    ],
 ];

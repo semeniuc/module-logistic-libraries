@@ -46,7 +46,7 @@ class LibraryDataController extends Controller
             'auto' => APP_PATH . '/var/tmp/[АВТО] Сергей Шабанов.xlsx',
         ];
 
-        $categoryName = 'train';
+        $categoryName = 'train-service';
         $pathToFile = $files[$categoryName];
 
         $this->importService->execute($categoryName, $pathToFile);
