@@ -3,6 +3,7 @@ import {exportData} from './action/exportFile.js';
 import {importData} from './action/importFile.js';
 import {setActiveStage} from "./view/stages.js";
 import './action/inputFile.js';
+import './action/selectType.js';
 
 window.step = step;
 window.exportData = exportData;
