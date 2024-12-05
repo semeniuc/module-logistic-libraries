@@ -50,13 +50,11 @@ class AddItemsService extends ItemsService
         if ($coordinates) {
             $coordinates = array_values($coordinates);
             foreach ($rows as $rowNum => $rowData) {
-
-
                 for ($key = 0; $key < count($coordinates); $key++) {
                     if (array_key_exists($key, $rowData)) {
                         $result[$rowNum][$coordinates[$key]['id'][APP_ENV]] = $rowData[$key];
                     } else {
-                        // Добавляем сервисную метку
+                        // Добавляем метку
                         $result[$rowNum][$coordinates[$key]['id'][APP_ENV]] = true; // true
                     }
                 }

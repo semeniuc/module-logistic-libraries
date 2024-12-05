@@ -25,7 +25,7 @@ class ImportService
     {
         # Read
         $dataFromExcel = $this->read($categoryName, $pathToFile);
-
+        
         # Delete
         if (!empty($dataFromExcel)) {
             $this->delete($categoryName, $dataFromExcel);
