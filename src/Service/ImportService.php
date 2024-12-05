@@ -70,11 +70,10 @@ class ImportService
             ],
         ];
 
-        foreach ($resultAddItems as $entityType => $items) {
-            $firstRow = (include APP_PATH . '/config/' . $categoryName . '/' . $entityType . '.php')['rows']['first'];
+        foreach ($resultAddItems[$categoryName] as $entityType => $items) {
+            $firstRow = (include APP_PATH . "/config/library/{$categoryName}/{$entityType}.php")['rows']['first'];
 
             foreach ($items as $key => $item) {
-
                 if (is_string($key) && str_contains($key, '_')) {
                     preg_match('/\d+$/', $key, $matches);
                     $key = $matches[0];
