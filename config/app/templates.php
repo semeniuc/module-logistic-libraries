@@ -11,4 +11,11 @@ return [
             'container-rent' => 'Аренда контейнеров',
         ],
     ],
+    'train' => [
+        'template' => 'train-template.xlsx',
+        'sheets' => [
+            'train' => 'ЖД',
+            'train-alternative' => 'ЖД альтернатива',
+        ],
+    ],
 ];
